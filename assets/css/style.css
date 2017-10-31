@@ -230,3 +230,7 @@
   a {
       text-decoration: none!important;
   }
+
+  #button1, #button2, #button3{
+      opacity: 0;
+  }

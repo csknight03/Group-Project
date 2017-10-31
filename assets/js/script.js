@@ -65,6 +65,18 @@ $("#section-1-button").on("click touchstart", function(event) {
         hashTagActive = this.hash;
     }
 
+    setTimeout(function() {
+        $("#button1").animate({ 'opacity': '1' }, 1700);
+    }, 1000);
+
+    setTimeout(function() {
+        $("#button2").animate({ 'opacity': '1' }, 1700);
+    }, 1400);
+
+    setTimeout(function() {
+        $("#button3").animate({ 'opacity': '1' }, 1700);
+    }, 1800);
+
 
 });
 
