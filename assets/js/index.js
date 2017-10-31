@@ -6,8 +6,11 @@ var userPlatform;
 var character1;
 var character2;
 var character3;
+var introMusic = new Audio("assets/audio/intro.mp3")
+introMusic.volume = 0.09;
 
 $(document).ready(function() {
+    introMusic.play()
     $("#gamertagSearch").hide()
     $("#searchButton").hide()
     $("#section-2").hide()
@@ -18,6 +21,8 @@ $(document).ready(function() {
     setTimeout(function() {
         $(".scroll").animate({ 'opacity': '1' }, 1000);
     }, 4500);
+    
+    
 });
 
 
@@ -27,13 +32,14 @@ $(document).ready(function() {
 
 
 
-$(".console-images").on("click", function() {
+$(".console-images").on("click", function(event) {
+    event.preventDefault()
     userPlatform = $(this).attr("data")
     console.log(userPlatform)
     $(".platforms").hide()
     $("#searchButton").show()
     $("#gamertagSearch").show()
-    $("#characters").html("<div class='col-sm-12'><h5 class='text-center' style='color:red;'>If you do not have a gamertag, try searching for one of the following: </h5></div><br>")
+    $("#characters").html("<div class='col-sm-12'><h5 class='text-center' style='color: #5FD2D3;'>If you do not have a gamertag, try searching for one of the following: </h5></div><br>")
     var ul = $("<ul class='text-center' style='color: white; list-style: none;'>")
     var sampleTags = $("<div>")
     sampleTags.addClass("col-sm-12 text-center")
@@ -99,6 +105,27 @@ $("#gearButton").on("click touchstart", function(event) {
         hashTagActive = this.hash;
     }
 
+
+});
+
+
+var hashTagActive = "";
+$("#lfgButton").on("click touchstart", function(event) {
+    if (hashTagActive != this.hash) { //this will prevent if the user click several times the same link to freeze the scroll.
+        event.preventDefault();
+        //calculate destination place
+        var dest = 0;
+        if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
+            dest = $(document).height() - $(window).height();
+        } else {
+            dest = $(this.hash).offset().top;
+        }
+        //go to destination
+        $('html,body').animate({
+            scrollTop: dest
+        }, 600, 'swing');
+        hashTagActive = this.hash;
+    }
 
 });
 
@@ -221,3 +248,17 @@ function characterFind() {
     });
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

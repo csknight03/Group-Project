@@ -208,6 +208,8 @@
       width: 175px;
       border: 2px solid #5FD2D3;
   }
+
+
   .item-count {
     color: #5FD2D3;
     display: table-cell;
@@ -227,6 +229,39 @@
       color: white;
   }
 
+
+
+
+  .diamond-shape2 {
+    background: #5FD2D3;
+    height: 175px;
+    text-align: center;
+    transform:rotate(45deg);
+      width: 175px;
+      border: 2px solid white;
+  }
+
+  
+  .item-count2 {
+    color: white;
+    display: table-cell;
+    height: 175px;
+    transform: rotate(-45deg);
+    vertical-align: middle;
+      width:175px;
+      font-size: 30px;
+  }
+
+  .diamond-shape2:hover{
+      background-color: transparent;
+      border: 2px solid #5FD2D3;
+  }
+
+  .item-count2:hover{
+      color: #5FD2D3;
+  }
+
+
   a {
       text-decoration: none!important;
   }
@@ -234,3 +269,6 @@
   #button1, #button2, #button3{
       opacity: 0;
   }
+
+
+  
