@@ -11,6 +11,12 @@
 
 .section-2{
     height: 100vh;
+    background: url(http://2.bp.blogspot.com/-h6VI4CKhrok/VFwFfqfvaDI/AAAAAAAAFzE/bzDu56lqpI8/s1600/destiny_april23_05.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
     background-color: #1E1E1E;
 }
 
