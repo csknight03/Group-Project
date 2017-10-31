@@ -1,3 +1,4 @@
+//var queryURL = "https://bungie.net/Platform/Destiny2/SearchDestinyPlayer/";
 var xbox = 1;
 var ps = 2;
 var apiToken = 'e682b2e62ff9487d908264a092599b61';
@@ -10,62 +11,39 @@ var character3;
 $(document).ready(function() {
     $("#gamertagSearch").hide()
     $("#searchButton").hide()
-    $("#section-2").hide()
-    setTimeout(function() {
-        $(".d2-logo").animate({ 'opacity': '1' }, 3700);
-    }, 1000);
-    setTimeout(function() {
-        $(".scroll").animate({ 'opacity': '1' }, 1000);
-    }, 4500);
 });
 
 
-// $("#section-1-button").on("click", function(){
-// $("#section-2").show()
-// })
 
-
-
-$(".console-images").on("click", function() {
-    userPlatform = $(this).attr("data")
-    console.log(userPlatform)
+$("#xbox").on("click", function() {
+    userPlatform = 1
     $(".platforms").hide()
     $("#searchButton").show()
     $("#gamertagSearch").show()
-    $("#characters").html("<div class='col-sm-12'><h5 class='text-center' style='color:red;'>If you do not have a gamertag, try searching for one of the following: </h5></div><br>")
-    var ul = $("<ul class='text-center' style='color: white; list-style: none;'>")
-    var sampleTags = $("<div>")
-    sampleTags.addClass("col-sm-12 text-center")
+    $("#characters").html("<h5 class='center-align' style='color:red;'>If you do not have a gamertag, try searching for one of the following: </h5>")
+    var ul = $("<ul class='center-align' style='color: white;'>")
     ul.append("<li>ii WALZ ii</li>")
     ul.append("<li>Putin Pudding</li>")
     ul.append("<li>Luminusss</li>")
     ul.append("<li>Kurto13</li>")
-    sampleTags.append(ul)
-    $("#characters").append(sampleTags)
+    $("#characters").append(ul)
 
 })
 
-var hashTagActive = "";
-$("#section-1-button").on("click touchstart", function(event) {
-    $("#section-2").show()
-    if (hashTagActive != this.hash) { //this will prevent if the user click several times the same link to freeze the scroll.
-        event.preventDefault();
-        //calculate destination place
-        var dest = 0;
-        if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
-            dest = $(document).height() - $(window).height();
-        } else {
-            dest = $(this.hash).offset().top;
-        }
-        //go to destination
-        $('html,body').animate({
-            scrollTop: dest
-        }, 600, 'swing');
-        hashTagActive = this.hash;
-    }
+$("#playstation").on("click", function() {
+    userPlatform = 2
+    $(".platforms").hide()
+    $("#searchButton").show()
+    $("#gamertagSearch").show()
+    $("#characters").html("<h5 class='center-align'>If you do not have a gamertag, try searching for one of the following: </h5>")
+    var ul = $("<ul class='center-align' style='color: white;'>")
+    ul.append("<li>gothalion</li>")
+    ul.append("<li>NewSam973</li>")
+    ul.append("<li>bolla90</li>")
+    ul.append("<li>Buddha717</li>")
+    $("#characters").append(ul)
 
-
-});
+})
 
 
 $("#searchButton").on("click", function() {
@@ -130,10 +108,7 @@ function characterFind() {
                 for (i = 0; i < gamertag.length; i++) {
                     gamertag = gamertag.replace("%20", " ")
                 }
-                var newCard = "<div class='col-sm-4'><div class='card destiny-card' style='width: 20rem;'><img class='card-img-top emblemBackground' src='https://bungie.net" + emblemBackground + "'alt='Card image cap'><div class='card-body'><h4 class='card-title gamertag-title'>" + gamertag + "</h4> <div class='destiny-card-content' id='card-content'> <p class='card-text classType text-center class-icon-" + characterID + "'>" + classType + "</p> <p class='light-symbol text-center'>✦ <span class='lightLevel'>" + light + "</span></p><br><p class='text-center time-played'>Time Played: " + minutesPlayed + " minutes</p><div class='row gun-icons-" + characterID + "'></div><div class='row gear-icons-" + characterID + "'></div></div></div>"
-                
-                
-                
+                var newCard = "<div class='col s12 m4'><div class='card destiny-card'><div class='card-image'><img class ='emblemBackground' src='https://bungie.net" + emblemBackground + "'><br><span class='card-title gamertag-title'>" + gamertag + "</span></div><div class='card-content destiny-card-content' id='card-content'><p class='truncate classType center-align class-icon-" + characterID + "'>" + classType + "</p><br><p class='light-symbol center-align'>✦ <span class='lightLevel'>" + light + "</span></p><br><p class='center-align time-played'>Time Played: " + minutesPlayed + " minutes</p><h5 class ='center-align'>Equiped Guns</h5><br><div class='row gun-icons-" + characterID + "'></div><h5 class ='center-align'>Equiped Gear</h5><br><div class='row gear-icons-" + characterID + "'></div></div></div></div>"
                 $(newCard).append("<p>TEST</p>")
                 $("#characters").append(newCard)
                     //console.log(response.Response.characterEquipment.data[characterID].items)
@@ -147,42 +122,61 @@ function characterFind() {
                             "x-api-key": apiToken,
                         }
                     }
+
                     $.ajax(characterEquip).done(function(response) {
                         bucketHash = response.Response.inventory.bucketTypeHash
                         bungieURL = "https://www.bungie.net/"
                         iconURL = bungieURL + response.Response.displayProperties.icon
                         var img = $("<img>")
                         $(img).attr("src", iconURL)
-                        $(img).addClass("gear-icons-styling text-center")
+                        $(img).addClass("gear-icons-styling center-align")
+
                         var col = $("<div>");
-                        col.addClass("col-sm-6 text-center")
+                        col.addClass("col s6 center-align")
                         col.append(img)
+
                         if (bucketHash === 1498876634) {
                             $(".gun-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Secondary</p>")
+                            $(col).prepend("<p class='center-align' style='color: grey'>Secondary</p>")
+
                         } else if (bucketHash === 2465295065) {
                             $(".gun-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Primary</p>")
+                            $(col).prepend("<p class='center-align' style='color: grey'>Primary</p>")
                         } else if (bucketHash === 3448274439) {
                             $(".gear-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Helmet</p>")
+                            $(col).prepend("<p class='center-align' style='color: grey'>Helmet</p>")
                         } else if (bucketHash === 3551918588) {
                             $(".gear-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Gauntlets</p>")
+                            $(col).prepend("<p class='center-align' style='color: grey'>Gauntlets</p>")
                         } else if (bucketHash === 14239492) {
                             $(".gear-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Chest Piece</p>")
+                            $(col).prepend("<p class='center-align' style='color: grey'>Chest Piece</p>")
                         } else if (bucketHash === 20886954) {
                             $(".gear-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Boots</p>")
+                            $(col).prepend("<p class='center-align' style='color: grey'>Boots</p>")
                         } else if (bucketHash === 3284755031) {
                             $(".class-icon-" + characterID).prepend(img)
                             $(img).addClass("subclassImage")
+
+                            console.log("AAHH")
+
                         }
+
+
+
+
+
+
+
                     })
                 })
+
             })
+
         });
+
+
+
     });
 
 }
