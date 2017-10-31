@@ -14,6 +14,11 @@
     background-color: #1E1E1E;
 }
 
+.section-landing{
+    height: 100vh;
+    background-color: #1E1E1E;
+}
+
 .d2-logo{
         margin-left: auto;
         margin-right: auto;
@@ -134,17 +139,17 @@
 }
 
 .gamertag-title {
-    margin-bottom: 10px;
+    margin-bottom: -50px;
     margin-left: 43px;
 }
 
 .destiny-card-content {
     padding: 10px;
-    min-height: 730px;
+    min-height: 480px;
 }
 
 .gear-icons-styling {
-    width: 70%!important;
+    width: 55%!important;
     margin-left: auto!important;
     margin-right: auto!important;
     border-radius: 15px;
@@ -169,10 +174,12 @@
 .light-symbol {
     color: gold!important;
     font-size: 25px;
+    margin-top: -25px;
 }
 
 .time-played {
     color: red!important;
+    margin-top: -40px
 }
 
 .form-control-plaintext {
@@ -182,3 +189,38 @@
 .card-body{
     background-color: #252526;
 }
+
+.shape-section {
+    margin-top: 30px;
+    padding: 40px 0;
+  }
+  .diamond-shape {
+    background: transparent;
+    height: 175px;
+    text-align: center;
+    transform:rotate(45deg);
+      width: 175px;
+      border: 2px solid #5FD2D3;
+  }
+  .item-count {
+    color: #5FD2D3;
+    display: table-cell;
+    height: 175px;
+    transform: rotate(-45deg);
+    vertical-align: middle;
+      width:175px;
+      font-size: 30px;
+  }
+
+  .diamond-shape:hover{
+      background-color: #5FD2D3;
+      border: 2px solid white;
+  }
+
+  .item-count:hover{
+      color: white;
+  }
+
+  a {
+      text-decoration: none!important;
+  }
