@@ -285,5 +285,17 @@
     border-color: #868e96;
 }
 
+.pulse{
+    -moz-animation: pulse 2s infinite linear;
+    -o-animation: pulse 2s infinite linear;
+    -webkit-animation: pulse 2s infinite linear;
+    animation: pulse 2s infinite linear;
+  }
+
+
+  ::-webkit-input-placeholder { 
+    color: white;
+    padding-left: 2%;
+  }
 
   

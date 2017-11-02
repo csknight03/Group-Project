@@ -75,6 +75,10 @@ $("#section-1-button").on("click touchstart", function(event) {
         $("#button3").animate({ 'opacity': '1' }, 1700);
     }, 1800);
 
+    setTimeout(function() {
+        $(".diamond-shape").addClass("pulse");
+    }, 2000);
+
 
 });
 

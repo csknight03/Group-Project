@@ -54,7 +54,7 @@ $("#createPost").on("click", function(){
             var newCard = "<div class='card' style='width: 20rem;'><img class='card-img-top emblemBackground' src='https://bungie.net" + emblemBackground + "'alt='Card image cap'><div class='card-body'><h4 class='card-title gamertag-title'>" + gamertag + "</h4> <div class='destiny-card-content' id='card-content'> <p class='card-text classType text-center'>" + classType + "</p> <p class='light-symbol text-center'>✦ <span class='lightLevel'>" + lightLevel + "</span></p><p id='userMessage'>"+userMessage+"</p></div></div></div>"
             col.append(newCard)
             $("#submittedPosts").prepend(col)
-            $(".card").show(500)
+            $(".card").fadeIn(1000)
 
   });
 
