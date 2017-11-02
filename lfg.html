@@ -14,13 +14,13 @@
 
 <div class="row post-section" id="post-section">
 <div class="container">
-    <div class="row  justify-content-center" style="margin-top: 2%;">
+    <div class="row  justify-content-center" style="margin-top: 2%;" id="form">
 
 
 
 <form>
-    <div class="row ">
-        <div class="col-6">
+    <div class="row">
+        <div class="col-12">
                 <div class="form-group">
                         <label for="gamertag">Gamertag</label>
                         <input type="text" class="form-control" id="gamertag" placeholder="Enter Gamertag">
@@ -28,21 +28,16 @@
         </div>
 
         <div class="col-6">
-                <div class="form-group">
-                        <label for="lightlevel">Light Level</label>
-                        <input type="text" class="form-control" id="lightlevel" placeholder="Enter Lightlevel">
-                      </div>
+            <select class="form-control form-control-sm" id="activity" >
+                <option>Raid</option>
+                <option>Story</option>
+                <option>Trials</option>
+                <option>PVP</option>
+              </select>
         </div>
 
-        <div class="col-12">
-                <div class="form-group">
-                        <label for="lightlevel">Activity</label>
-                        <input type="text" class="form-control" id="lightlevel" placeholder="Enter Activity">
-                      </div>
-        </div>
-
-        <div class="col-4">
-                <select class="form-control form-control-sm">
+        <div class="col-6">
+                <select class="form-control form-control-sm" id="lookingfor" >
                         <option>Looking For...</option>
                         <option>Sherpa</option>
                         <option>Similar Skill</option>
@@ -50,10 +45,17 @@
                       </select>
         </div>
 
+        <div class="col-12">
+            <div class="form-group">
+                <label for="userMessage">Example textarea</label>
+                <textarea class="form-control" id="userMessage" rows="3"></textarea>
+              </div>
+        </div>
+
         <div class="col-3">
                 <div class="form-check">
                         <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" value="">
+                          <input class="form-check-input" type="checkbox" value="" id="mic">
                           I have a Mic!
                         </label>
                       </div>
@@ -64,15 +66,19 @@
 
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="createPost">Submit</button>
 
       </form>
+
+      <div class="row" id="submittedPosts">
+
+      </div>
 
     </div>
 
 </div>
 </div>
-
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
     <script src="assets/js/lfg.js"></script>
 </body>
 </html>
