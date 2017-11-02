@@ -1,4 +1,23 @@
+$("form").hide()
 
+
+$(document).ready(function() {
+
+    setTimeout(function() {
+        $(".scroll").animate({ 'opacity': '1' }, 1000);
+    }, 1500);
+})
+
+$(".scroll").on("click", function(){
+    $("form").show(1000)
+    $(".scroll").animate({ 'opacity': '0' }, 1000);
+})
+
+
+$("#createPost").on("click", function(){
+    $("form").hide(1000)
+    $(".scroll").animate({ 'opacity': '1' }, 1300);
+})
 
   var config = {
     apiKey: "AIzaSyB-tuh7WWk1RjVusPVjwZtct2otux6oxNk",
@@ -136,8 +155,3 @@ $("#createPost").on("click", addPost)
 
 
 }
-
-
-("#createPost").on("click", function(){
-    $("#form").hide()
-})
