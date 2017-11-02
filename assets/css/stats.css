@@ -1,0 +1,261 @@
+body {
+    background: url(http://www.paperbirchwine.com/wp-content/uploads/2016/07/Destiny-Wallpaper.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    background-color: black;
+}
+
+.section-landing{
+    height: 100vh;
+    background-color: #1E1E1E;
+}
+
+.d2-logo{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50%;
+        width: 100%;
+        opacity: 0;
+}
+
+#d2-logo{
+    opacity: 0;
+}
+
+.console-images{
+    height: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.shadow-text{
+  text-shadow:1px 1px 10px #000, 1px 1px 10px #000;
+}
+
+
+.fa-pulse2 {
+    display: inline-block;
+    -moz-animation: pulse 2s infinite linear;
+    -o-animation: pulse 2s infinite linear;
+    -webkit-animation: pulse 2s infinite linear;
+    animation: pulse 2s infinite linear;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.scroll{
+    opacity: 0;
+}
+
+.scroll-icon {
+    cursor: pointer;
+    color: #f5f5f5;
+    text-shadow: 0px 15px 0px #f5f5f5;
+    font-size: 7em !important;
+    margin-bottom: 5px !important;
+}
+
+.scroll-icon:hover {
+    cursor: pointer;
+    color: #f5f5f5;
+    text-shadow: 0 0 15px #f5f5f5;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.emblemBackground {
+    width: 100%;
+}
+
+.destiny-card {
+    background-color: #ECEFF1;
+    padding: 0px;
+}
+
+.gamertag-title {
+    margin-bottom: -50px;
+    margin-left: 43px;
+}
+
+.destiny-card-content {
+    padding: 10px;
+    min-height: 480px;
+}
+
+.gear-icons-styling {
+    width: 55%!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    border-radius: 15px;
+    border: 3px solid grey;
+    padding: 0%;
+}
+
+.classType {
+    font-size: 30px;
+    color: grey!important;
+}
+
+.datePlayed {}
+
+.subclassImage {
+    width: 50px!important;
+    height: 50px!important;
+    border: none!important;
+    display: grid;
+}
+
+.light-symbol {
+    color: gold!important;
+    font-size: 25px;
+    margin-top: -25px;
+}
+
+.time-played {
+    color: red!important;
+    margin-top: -40px
+}
+
+.form-control-plaintext {
+    width: 100%;
+}
+
+.card-body{
+    background-color: #252526;
+}
+
+.shape-section {
+    margin-top: 30px;
+    padding: 40px 0;
+  }
+  .diamond-shape {
+    background: transparent;
+    height: 175px;
+    text-align: center;
+    transform:rotate(45deg);
+      width: 175px;
+      border: 2px solid #5FD2D3;
+  }
+
+
+  .item-count {
+    color: #5FD2D3;
+    display: table-cell;
+    height: 175px;
+    transform: rotate(-45deg);
+    vertical-align: middle;
+      width:175px;
+      font-size: 30px;
+  }
+
+  .diamond-shape:hover{
+      background-color: #5FD2D3;
+      border: 2px solid white;
+  }
+
+  .item-count:hover{
+      color: white;
+  }
+
+
+
+
+  .diamond-shape2 {
+    background: #5FD2D3;
+    height: 175px;
+    text-align: center;
+    transform:rotate(45deg);
+      width: 175px;
+      border: 2px solid white;
+  }
+
+  
+  .item-count2 {
+    color: white;
+    display: table-cell;
+    height: 175px;
+    transform: rotate(-45deg);
+    vertical-align: middle;
+      width:175px;
+      font-size: 30px;
+  }
+
+  .diamond-shape2:hover{
+      background-color: transparent;
+      border: 2px solid #5FD2D3;
+  }
+
+  .item-count2:hover{
+      color: #5FD2D3;
+  }
+
+
+  a {
+      text-decoration: none!important;
+  }
+
+  #button1, #button2, #button3{
+      opacity: 0;
+  }
