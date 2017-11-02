@@ -117,3 +117,25 @@ form {
     display: none;
 }
 
+.btn-primary{
+    background-color: #5FD2D3;
+    border: 1px solid white;
+}
+
+.btn-primary:hover{
+    color: #5FD2D3;
+    background-color: white;
+    border: 1px solid #5FD2D3;
+}
+
+.card{
+    background-color: rgba(30, 30, 30, 0.8);
+    color: white;
+    border: 1px solid white;
+    min-height: 300px;
+    max-height: 300px;
+}
+
+#userMessage{
+    color: #5FD2D3;
+}
