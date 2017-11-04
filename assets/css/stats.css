@@ -1,23 +1,11 @@
-.section-1{
-    background: url(https://cdnb.artstation.com/p/assets/images/images/006/054/933/large/darek-zabrocki-destiny-vista-final-darekzabrocki.jpg?1495701233) no-repeat center center fixed; 
+body {
+    background: url(http://www.paperbirchwine.com/wp-content/uploads/2016/07/Destiny-Wallpaper.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100vh;
     background-color: black;
-}
-
-
-.section-2{
-    background: url(http://2.bp.blogspot.com/-h6VI4CKhrok/VFwFfqfvaDI/AAAAAAAAFzE/bzDu56lqpI8/s1600/destiny_april23_05.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    min-height: 100vh;
-    height: 100%;
-    background-color: #1E1E1E;
 }
 
 .section-landing{
@@ -44,7 +32,9 @@
     
 }
 
-
+.shadow-text{
+  text-shadow:1px 1px 10px #000, 1px 1px 10px #000;
+}
 
 
 .fa-pulse2 {
@@ -233,7 +223,7 @@
 
 
   .diamond-shape2 {
-    background-color: rgba(30, 30, 30, 0.8);
+    background: #5FD2D3;
     height: 175px;
     text-align: center;
     transform:rotate(45deg);
@@ -266,36 +256,7 @@
       text-decoration: none!important;
   }
 
-  #button1, #button2, #button3, #searchBanner, .platforms, #gamertagSearch, .destiny-card{
+  #button1, #button2, #button3{
       opacity: 0;
   }
 
-  #searchBanner{
-    background-color: rgba(30, 30, 30, 0.8);
-  }
-
-  .form-control-plaintext {
-      border: 1px solid #5FD2D3;
-      color: white!important;
-  }
-
-  .btn-secondary {
-    color: #fff;
-    background-color: #5FD2D3;
-    border-color: #868e96;
-}
-
-.pulse{
-    -moz-animation: pulse 2s infinite linear;
-    -o-animation: pulse 2s infinite linear;
-    -webkit-animation: pulse 2s infinite linear;
-    animation: pulse 2s infinite linear;
-  }
-
-
-  ::-webkit-input-placeholder { 
-    color: white;
-    padding-left: 2%;
-  }
-
-  
