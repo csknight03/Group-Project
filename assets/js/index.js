@@ -20,8 +20,8 @@ $(document).ready(function() {
     setTimeout(function() {
         $(".scroll").animate({ 'opacity': '1' }, 1000);
     }, 4500);
-    
-    
+
+
 });
 
 
@@ -35,7 +35,7 @@ $(".console-images").on("click", function(event) {
     event.preventDefault()
     userPlatform = $(this).attr("data")
     console.log(userPlatform)
-    // $(".platforms").hide()
+        // $(".platforms").hide()
     $(".platforms").fadeOut()
     $("#searchButton").show()
     setTimeout(function() {
@@ -195,17 +195,17 @@ function characterFind() {
                     gamertag = gamertag.replace("%20", " ")
                 }
                 var newCard = "<div class='col-sm-4'><div class='card destiny-card' style='width: 20rem;'><img class='card-img-top emblemBackground' src='https://bungie.net" + emblemBackground + "'alt='Card image cap'><div class='card-body'><h4 class='card-title gamertag-title'>" + gamertag + "</h4> <div class='destiny-card-content' id='card-content'> <p class='card-text classType text-center class-icon-" + characterID + "'>" + classType + "</p> <p class='light-symbol text-center'>✦ <span class='lightLevel'>" + light + "</span></p><br><p class='text-center time-played'>Time Played: " + minutesPlayed + " minutes</p><div class='row gun-icons-" + characterID + "'></div><div class='row gear-icons-" + characterID + "'></div></div></div>"
-                
-                
-                
+
+
+
                 $(newCard).append("<p>TEST</p>")
                 $("#characters").append(newCard)
-                
+
                 setTimeout(function() {
                     $(".destiny-card").animate({ 'opacity': '1' }, 1000);
                 }, 2000);
 
-                    //console.log(response.Response.characterEquipment.data[characterID].items)
+                //console.log(response.Response.characterEquipment.data[characterID].items)
                 $.each(response.Response.characterEquipment.data[characterID].items, function(itemKey, itemValue) {
                     //console.log(itemValue.itemHash)
                     var characterEquip = {
@@ -255,17 +255,3 @@ function characterFind() {
     });
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
