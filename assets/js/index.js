@@ -11,7 +11,6 @@ introMusic.volume = 0.09;
 
 $(document).ready(function() {
     introMusic.play()
-    $("#gamertagSearch").hide()
     $("#searchButton").hide()
     $("#section-2").hide()
     $("#section-landing").hide()
@@ -36,19 +35,12 @@ $(".console-images").on("click", function(event) {
     event.preventDefault()
     userPlatform = $(this).attr("data")
     console.log(userPlatform)
-    $(".platforms").hide()
+    // $(".platforms").hide()
+    $(".platforms").fadeOut()
     $("#searchButton").show()
-    $("#gamertagSearch").show()
-    $("#characters").html("<div class='col-sm-12'><h5 class='text-center' style='color: #5FD2D3;'>If you do not have a gamertag, try searching for one of the following: </h5></div><br>")
-    var ul = $("<ul class='text-center' style='color: white; list-style: none;'>")
-    var sampleTags = $("<div>")
-    sampleTags.addClass("col-sm-12 text-center")
-    ul.append("<li>ii WALZ ii</li>")
-    ul.append("<li>Putin Pudding</li>")
-    ul.append("<li>Luminusss</li>")
-    ul.append("<li>Kurto13</li>")
-    sampleTags.append(ul)
-    $("#characters").append(sampleTags)
+    setTimeout(function() {
+        $("#gamertagSearch").animate({ 'opacity': '1' }, 1000);
+    }, 700);
 
 })
 
@@ -83,6 +75,10 @@ $("#section-1-button").on("click touchstart", function(event) {
         $("#button3").animate({ 'opacity': '1' }, 1700);
     }, 1800);
 
+    setTimeout(function() {
+        $(".diamond-shape").addClass("pulse");
+    }, 2000);
+
 
 });
 
@@ -104,6 +100,13 @@ $("#gearButton").on("click touchstart", function(event) {
         }, 600, 'swing');
         hashTagActive = this.hash;
     }
+
+    setTimeout(function() {
+        $("#searchBanner").animate({ 'opacity': '1' }, 1000);
+    }, 900);
+    setTimeout(function() {
+        $(".platforms").animate({ 'opacity': '1' }, 1000);
+    }, 2000);
 
 
 });
@@ -197,6 +200,11 @@ function characterFind() {
                 
                 $(newCard).append("<p>TEST</p>")
                 $("#characters").append(newCard)
+                
+                setTimeout(function() {
+                    $(".destiny-card").animate({ 'opacity': '1' }, 1000);
+                }, 2000);
+
                     //console.log(response.Response.characterEquipment.data[characterID].items)
                 $.each(response.Response.characterEquipment.data[characterID].items, function(itemKey, itemValue) {
                     //console.log(itemValue.itemHash)

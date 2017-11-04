@@ -35,21 +35,9 @@ $(document).ready(function() {
 $(".console-images").on("click", function(event) {
     event.preventDefault()
     userPlatform = $(this).attr("data")
-    console.log(userPlatform)
     $(".platforms").hide()
     $("#searchButton").show()
     $("#gamertagSearch").show()
-    $("#characters").html("<div class='col-sm-12'><h5 class='text-center shadow-text' style='color: #5FD2D3;'>If you do not have a gamertag, try searching for one of the following: </h5></div><br>")
-    var ul = $("<ul class='text-center' style='color: white; list-style: none;'>")
-    var sampleTags = $("<div>")
-    sampleTags.addClass("col-sm-12 text-center shadow-text")
-    ul.append("<li>ii WALZ ii</li>")
-    ul.append("<li>Putin Pudding</li>")
-    ul.append("<li>Luminusss</li>")
-    ul.append("<li>Kurto13</li>")
-    sampleTags.append(ul)
-    $("#characters").append(sampleTags)
-
 })
 
 var hashTagActive = "";
@@ -134,7 +122,6 @@ $("#searchButton").on("click", function() {
     for (i = 0; i < gamertag.length; i++) {
         gamertag = gamertag.replace(" ", "%20")
     }
-    console.log(gamertag)
 })
 
 $("#searchButton").on("click", characterFind)
@@ -154,96 +141,83 @@ function characterFind() {
     }
 
 
-    $.ajax(settings).done(function(response) {
-        var membershipid = response.Response[0].membershipId
-            // console.log(response)
-            // console.log(membershipid)
+            $.ajax(settings).done(function(response) {
+                var membershipid = response.Response[0].membershipId
 
-        var characterIds = {
-            "crossDomain": true,
-            "url": "https://www.bungie.net/Platform/Destiny2/" + userPlatform + "/Profile/" + membershipid + "/?components=Characters,205",
-            "method": "GET",
-            "headers": {
-                "x-api-key": apiToken,
-            }
-        }
-
-
-        $.ajax(characterIds).done(function(response) {
-            // console.log(response.Response)
-
-            $.each(response.Response.characters.data, function(key, value) {
-                var emblemBackground = value.emblemBackgroundPath
-                var dateLastPlayed = value.dateLastPlayed
-                var dateLastPlayed = dateLastPlayed.slice(0, -10);
-                var light = value.light;
-                var classType = value.classType
-                var minutesPlayed = value.minutesPlayedTotal
-                var characterID = key
-
-                if (classType === 0) {
-                    classType = "Titan"
-                } else if (classType === 1) {
-                    classType = "Hunter"
-                } else if (classType === 2) {
-                    classType = "Warlock"
-                }
-                for (i = 0; i < gamertag.length; i++) {
-                    gamertag = gamertag.replace("%20", " ")
-                }
-                var newCard = "<div class='col-sm-4'><div class='card destiny-card' style='width: 20rem;'><img class='card-img-top emblemBackground' src='https://bungie.net" + emblemBackground + "'alt='Card image cap'><div class='card-body'><h4 class='card-title gamertag-title'>" + gamertag + "</h4> <div class='destiny-card-content' id='card-content'> <p class='card-text classType text-center class-icon-" + characterID + "'>" + classType + "</p> <p class='light-symbol text-center'>✦ <span class='lightLevel'>" + light + "</span></p><br><p class='text-center time-played'>Time Played: " + minutesPlayed + " minutes</p><div class='row gun-icons-" + characterID + "'></div><div class='row gear-icons-" + characterID + "'></div></div></div>"
-                
-                
-                
-                $(newCard).append("<p>TEST</p>")
-                $("#characters").append(newCard)
-                    //console.log(response.Response.characterEquipment.data[characterID].items)
-                $.each(response.Response.characterEquipment.data[characterID].items, function(itemKey, itemValue) {
-                    //console.log(itemValue.itemHash)
-                    var characterEquip = {
-                        "crossDomain": true,
-                        "url": "https://www.bungie.net/Platform/Destiny2/Manifest/DestinyInventoryItemDefinition/" + itemValue.itemHash,
-                        "method": "GET",
-                        "headers": {
-                            "x-api-key": apiToken,
-                        }
+                var characterIds = {
+                    "crossDomain": true,
+                    "url": "https://www.bungie.net/Platform/Destiny2/" + userPlatform + "/Profile/" + membershipid + "/?components=Characters,205",
+                    "method": "GET",
+                    "headers": {
+                        "x-api-key": apiToken,
                     }
-                    $.ajax(characterEquip).done(function(response) {
-                        bucketHash = response.Response.inventory.bucketTypeHash
-                        bungieURL = "https://www.bungie.net/"
-                        iconURL = bungieURL + response.Response.displayProperties.icon
-                        var img = $("<img>")
-                        $(img).attr("src", iconURL)
-                        $(img).addClass("gear-icons-styling text-center")
-                        var col = $("<div>");
-                        col.addClass("col-sm-6 text-center")
-                        col.append(img)
-                        if (bucketHash === 1498876634) {
-                            $(".gun-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Secondary</p>")
-                        } else if (bucketHash === 2465295065) {
-                            $(".gun-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Primary</p>")
-                        } else if (bucketHash === 3448274439) {
-                            $(".gear-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Helmet</p>")
-                        } else if (bucketHash === 3551918588) {
-                            $(".gear-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Gauntlets</p>")
-                        } else if (bucketHash === 14239492) {
-                            $(".gear-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Chest Piece</p>")
-                        } else if (bucketHash === 20886954) {
-                            $(".gear-icons-" + characterID).prepend(col)
-                            $(col).prepend("<p class='text-center' style='color: grey'>Boots</p>")
-                        } else if (bucketHash === 3284755031) {
-                            $(".class-icon-" + characterID).prepend(img)
-                            $(img).addClass("subclassImage")
-                        }
-                    })
-                })
-            })
-        });
-    });
+                }
+
+
+                                $.ajax(characterIds).done(function(response) {
+
+                                    $.each(response.Response.characters.data, function(key, value) {
+                                        var emblemBackground = value.emblemBackgroundPath
+                                        var dateLastPlayed = value.dateLastPlayed
+                                        var dateLastPlayed = dateLastPlayed.slice(0, -10);
+                                        var light = value.light;
+                                        var classType = value.classType
+                                        var minutesPlayed = value.minutesPlayedTotal
+                                        var characterID = key
+                                        
+
+                                    
+
+                                        if (classType === 0) {
+                                            classType = "Titan"
+                                        } else if (classType === 1) {
+                                            classType = "Hunter"
+                                        } else if (classType === 2) {
+                                            classType = "Warlock"
+                                        }
+                                        for (i = 0; i < gamertag.length; i++) {
+                                            gamertag = gamertag.replace("%20", " ")
+                                        }
+                                        
+                                        var newCard = "<div class='col-sm-4'><div class='card destiny-card' style='width: 20rem;'><img class='card-img-top emblemBackground' src='https://bungie.net" + emblemBackground + "'alt='Card image cap'><div class='card-body'><h4 class='card-title gamertag-title'>" + gamertag + "</h4> <div class='destiny-card-content' id='card-content'> <p class='card-text classType text-center class-icon-" + characterID + "'>" + classType + "</p> <p class='light-symbol text-center'>✦ <span class='lightLevel'>" + light + "</span></p><br><p class='text-center time-played'>Time Played: " + minutesPlayed + " minutes</p><div class='row gun-icons-" + characterID + "'></div><div class='row gear-icons-" + characterID + "'></div></div></div>"
+                                        $("#characters").append(newCard)
+
+                                        
+                                                                var characterStat = {
+                                                                    "crossDomain": true,
+                                                                    "url":  "https://www.bungie.net/Platform/Destiny2/"+userPlatform+"/Account/"+membershipid+"/Character/"+characterID+"/Stats/?modes=39",
+                                                                    "method": "GET",
+                                                                    "headers": {
+                                                                        "x-api-key": apiToken,
+                                                                    }
+                                                                }
+                                                                $.ajax(characterStat).done(function(response) {
+                                                                    bungieURL = "https://www.bungie.net/"
+                                                                    var stats = response.Response["trialsofthenine"]["allTime"]
+                                                                    var img = $("<img>")
+                                                                    $(img).addClass("gear-icons-styling text-center")
+                                                                    var col = $("<div>");
+                                                                    col.addClass("col-sm-6 text-center")
+                                                                    col.append(img)
+
+                                                                    console.log(stats)
+
+                                                                    var gamesPlayed = stats.activitiesEntered.basic.displayValue
+                                                                    var gamesWon = stats.activitiesWon.basic.displayValue
+                                                                    var winPercentage = gamesWon/gamesPlayed
+                                                                    var assists = stats.assists.basic.displayValue
+                                                                    var deathDistance = stats.averageDeathDistance.basic.displayValue
+                                                                    var killDistance = stats.averageKillDistance.basic.displayValue
+                                                                    var totalDeaths = stats.death.basic.displayValue
+                                                                    var totalKills = stats.kills.basic.displayValue
+                                                                    var efficiency = stats.efficiency.basic.displayValue
+                                                                    
+                                                                    console.log(gamesPlayed)
+
+
+                                                                })
+                                            })
+                           });
+           });
 
 }

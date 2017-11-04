@@ -4,6 +4,138 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     background-color: black;
+}
+
+.post-card{
+    padding: 10px;
+}
+
+form {
+    background-color: rgba(30, 30, 30, 0.8);
+    padding-right: 1%;
+    padding-left: 1%;
+    padding-bottom: 2%;
+    color: white;
+}
+
+.row{
+    width: 100%;
+}
+
+.fa-pulse2 {
+    display: inline-block;
+    -moz-animation: pulse 2s infinite linear;
+    -o-animation: pulse 2s infinite linear;
+    -webkit-animation: pulse 2s infinite linear;
+    animation: pulse 2s infinite linear;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.scroll{
+    opacity: 0;
+}
+
+.scroll-icon {
+    cursor: pointer;
+    color: #f5f5f5;
+    text-shadow: 0px 15px 0px #f5f5f5;
+    font-size: 7em !important;
+    margin-bottom: 5px !important;
+}
+
+.scroll-icon:hover {
+    cursor: pointer;
+    color: #f5f5f5;
+    text-shadow: 0 0 15px #f5f5f5;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.card{
+    display: none;
+}
+
+.btn-primary{
+    background-color: #5FD2D3;
+    border: 1px solid white;
+}
+
+.btn-primary:hover{
+    color: #5FD2D3;
+    background-color: white;
+    border: 1px solid #5FD2D3;
+}
+
+.card{
+    background-color: rgba(30, 30, 30, 0.8);
+    color: white;
+    border: 1px solid white;
+    min-height: 300px;
+    max-height: 300px;
+}
+
+#userMessage{
+    color: #5FD2D3;
 }
