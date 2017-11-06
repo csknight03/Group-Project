@@ -150,7 +150,8 @@ form {
 }
 
 #userMessage {
-    color: #5FD2D3;
+    color: #5FD2D3!important;
+    padding: 2%;
 }
 
 .gamertag-title {}
@@ -160,3 +161,27 @@ form {
     margin: 0;
     opacity: 0;
 }
+
+.card-img-top {
+    background-size: contain;
+    position: absolute;
+    background-repeat: no-repeat;
+    height: 25%;
+    width: 100%;
+}
+
+.card-title{
+    margin-top: 1rem;
+    margin-left: 4.25rem;
+}
+.char-class{
+    margin-bottom: 0.25rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+i {
+    font-size: 20px;
+}
+
+
