@@ -31,29 +31,33 @@ $(document).ready(function() {
     }, 900);
 
     var app = document.getElementById('app');
+    var app2 = document.getElementById('app2');
 
     var typewriter = new Typewriter(app, {
         loop: true
     });
 
-    typewriter.typeString('Looking For a...')
+    typewriter.pauseFor(1300).typeString('Looking for another')
         .pauseFor(900)
-        .deleteChars(3)
+        .deleteChars(6)
         .typeString(' Raid Group')
         .pauseFor(900)
         .deleteChars(11)
         .typeString(' Trials God')
         .pauseFor(900)
         .deleteChars(11)
-        .typeString(' Companion!')
+        .typeString(' Companion')
         .pauseFor(900)
-        .deleteChars(10)
+        .deleteChars(9)
         .typeString(' Scrub!')
         .pauseFor(900)
         .deleteChars(7)
         .typeString(' Sherpa!')
         .pauseFor(900)
         .deleteChars(8)
+        .typeString(' Friendly Voice')
+        .pauseFor(900)
+        .deleteChars(15)
         .start();
 
 })
