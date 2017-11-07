@@ -12,6 +12,61 @@ $(document).ready(function() {
     }, 900);
 })
 
+$(document).ready(function() {
+    /////////////////////////////////////////////////// FINDING THEIR TIMEZONE //////////////////////////////////////////////////////////////////
+
+
+    var apiToken = 'AIzaSyDtUUkK_kOHvU4kydOumNbizpvmpfMlXQw'
+    var lat;
+    var long;
+    var condition = false;
+    var userTimezone;
+
+
+    ///////////////////// //////////////////////Gathering a users Lat and Long //////////////////////////////////////////////////////////////////
+
+
+    
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(successFunction);
+    } else {
+        alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+    }
+
+    function successFunction(position) {
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+        condition = true;
+        console.log('Your latitude is :'+lat+' and longitude is '+long);
+
+        var GoogleSettings = {
+            "crossDomain": true,
+            "url": "https://maps.googleapis.com/maps/api/timezone/json?location="+lat+","+long+"&timestamp=1331161200&key=" + apiToken,
+            "method": "GET",
+          }
+
+                if(condition === true){
+                        $.ajax(GoogleSettings).done(function(response) {
+                                userTimeZone= response.timeZoneName
+                                console.log(userTimeZone)
+
+
+                        })
+
+                    }
+            }
+
+
+            
+
+            //////////////////////////////////////////////////  END OF TIMEZONE FUNCTIONS //////////////////////////////////////////////////////
+
+            })
+
+
+
+
+
 $(".scroll").on("click", function() {
     $("form").show(1000)
     $(".scroll").animate({ 'opacity': '0' }, 1000);
@@ -52,10 +107,18 @@ database.ref().on("child_added", function(snapshot) {
     var characterID = user.characterID;
     var classType = user.classType;
     var userMessage = user.userMessage;
+    var timeZone = user.timeZone;
+    
+
+    if (mic === 'Yes'){
+        mic = "<i class='fa fa-microphone' aria-hidden='true' style='color:#5FD2D3'></i>"
+    } else if( mic === 'No' || mic === 'I have a Mic...' ){
+        mic = "<i class='fa fa-microphone-slash' aria-hidden='true'  style='color: red'></i>"
+    }
 
     var col = $("<div>")
     col.addClass("col-4  post-card")
-    var newCard = "<div class='card' style='width: 20rem;'><img class='card-img-top emblemBackground' src='https://bungie.net" + emblemBackground + "'alt='Card image cap'><div class='card-body'><h4 class='card-title gamertag-title'>" + gamertag + "</h4> <div class='destiny-card-content' id='card-content'> <p class='card-text classType text-center'>" + classType + "</p> <p class='light-symbol text-center'>✦ <span class='lightLevel'>" + lightLevel + "</span></p><p id='userMessage'>" + userMessage + "</p></div></div></div>"
+    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/"+ emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>"+gamertag+"</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>"+mic+"</div><div class='col-sm-4 char-class ' style='color: white; '><h6>"+ classType +"</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red;'>"+ activity+ "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text' id='userMessage' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center' style='padding: 5%;'><div class='col-12'>"+timeZone+"</div><div class='col-12'>Looking For: <span style='color: red;'>"+lookingfor+"</span></div></div></div></div></div>"
     col.append(newCard)
     $("#submittedPosts").prepend(col)
     $(".card").fadeIn(1000)
@@ -134,6 +197,8 @@ function addPost(event) {
                 gamertag = gamertag.replace("%20", " ")
             }
 
+                    
+
 
             database.ref().push({
                 gamertag: gamertag,
@@ -143,7 +208,8 @@ function addPost(event) {
                 lookingfor: lookingfor,
                 emblemBackground: emblemBackground,
                 classType: classType,
-                userMessage: userMessage
+                userMessage: userMessage,
+                timeZone: userTimeZone
 
             });
 
