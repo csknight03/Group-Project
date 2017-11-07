@@ -20,6 +20,32 @@ $(document).ready(function() {
     setTimeout(function() {
         $("#video_overlays").animate({ 'opacity': '1' }, 1000);
     }, 900);
+
+    var app = document.getElementById('app');
+    
+    var typewriter = new Typewriter(app, {
+        loop: true
+    });
+    
+    typewriter.typeString('Looking For a...')
+        .pauseFor(900)
+        .deleteChars(3)
+        .typeString(' Raid Group')
+        .pauseFor(900)
+        .deleteChars(11)
+        .typeString(' Trials God')
+        .pauseFor(900)
+        .deleteChars(11)
+        .typeString(' Companion!')
+        .pauseFor(900)
+        .deleteChars(10)
+        .typeString(' Scrub!')
+        .pauseFor(900)
+        .deleteChars(7)
+        .typeString(' Sherpa!')
+        .pauseFor(900)
+        .deleteChars(8)
+        .start();
  
 })
 
