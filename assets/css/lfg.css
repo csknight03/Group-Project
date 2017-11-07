@@ -1,5 +1,5 @@
 .post-section {
-    background: url(https://destinyelite.com/images/banner3.jpg) no-repeat center center fixed;
+    background: url(https://images2.alphacoders.com/847/thumb-1920-847443.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -183,4 +183,61 @@ i {
     font-size: 20px;
 }
 
+.landing-page{
+    height: 100vh;
+}
+
+#video_box{
+    float:left;
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover; 
+}
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover; 
+}
+
+
+
+#video_overlays {
+position:absolute;
+/* float:left; */
+    width:100%;
+    margin-left: 25%;
+    margin-right: 25%;
+    min-height:50%;
+    margin-top: 10%;
+    background-color: transparent;
+    z-index:300000;
+}
+
+#video_overlays h1{
+    font-size: 88px;
+    color: white;
+}
 
