@@ -41,6 +41,7 @@ $(".console-images").on("click", function(event) {
     setTimeout(function() {
         $("#gamertagSearch").animate({ 'opacity': '1' }, 1000);
     }, 700);
+    $("#console-text").html("Enter a Gamertag to View Guardian Loadout")
 
 })
 
