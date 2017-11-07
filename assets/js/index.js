@@ -6,8 +6,10 @@ var userPlatform;
 var character1;
 var character2;
 var character3;
-var introMusic = new Audio("assets/audio/intro.mp3")
-introMusic.volume = 0.09;
+var introMusic = new Audio("assets/audio/warmind.mp3")
+introMusic.volume = 0.50;
+var errorBanner = "<div class='alert alert-danger' role='alert'>No Destiny Player Found!</div>"
+
 
 $(document).ready(function() {
     introMusic.play()
@@ -23,6 +25,14 @@ $(document).ready(function() {
 
 
 });
+
+function incorrectSearch(){
+    $("#errorMessage").html(errorBanner)
+    setTimeout(function() {
+        $("#errorMessage").empty();
+    }, 1800);
+
+}
 
 
 // $("#section-1-button").on("click", function(){
@@ -41,6 +51,7 @@ $(".console-images").on("click", function(event) {
     setTimeout(function() {
         $("#gamertagSearch").animate({ 'opacity': '1' }, 1000);
     }, 700);
+    $("#console-text").html("Enter a Gamertag to View Guardian Loadout")
 
 })
 
@@ -66,14 +77,24 @@ $("#section-1-button").on("click touchstart", function(event) {
     setTimeout(function() {
         $("#button1").animate({ 'opacity': '1' }, 1700);
     }, 1000);
+    setTimeout(function() {
+        $("#button4").animate({ 'opacity': '1' }, 1700);
+    }, 1000);
 
     setTimeout(function() {
         $("#button2").animate({ 'opacity': '1' }, 1700);
+    }, 1400);
+    setTimeout(function() {
+        $("#button5").animate({ 'opacity': '1' }, 1700);
     }, 1400);
 
     setTimeout(function() {
         $("#button3").animate({ 'opacity': '1' }, 1700);
     }, 1800);
+    setTimeout(function() {
+        $("#button6").animate({ 'opacity': '1' }, 1700);
+    }, 1800);
+
 
     setTimeout(function() {
         $(".diamond-shape").addClass("pulse");
@@ -158,10 +179,13 @@ function characterFind() {
 
 
     $.ajax(settings).done(function(response) {
-        var membershipid = response.Response[0].membershipId
             // console.log(response)
             // console.log(membershipid)
 
+ if(response.Response[0] == undefined){
+    incorrectSearch()
+ }else {
+    var membershipid = response.Response[0].membershipId
         var characterIds = {
             "crossDomain": true,
             "url": "https://www.bungie.net/Platform/Destiny2/" + userPlatform + "/Profile/" + membershipid + "/?components=Characters,205",
@@ -252,6 +276,8 @@ function characterFind() {
                 })
             })
         });
+    }
     });
+
 
 }
