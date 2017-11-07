@@ -1,5 +1,5 @@
 .section-1{
-    background: url(https://cdnb.artstation.com/p/assets/images/images/006/054/933/large/darek-zabrocki-destiny-vista-final-darekzabrocki.jpg?1495701233) no-repeat center center fixed; 
+    background: url(https://i.ytimg.com/vi/8hApaC4vzvc/maxresdefault.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -266,7 +266,7 @@
       text-decoration: none!important;
   }
 
-  #button1, #button2, #button3, #searchBanner, .platforms, #gamertagSearch, .destiny-card{
+  #button1, #button2, #button3, #button4, #button5, #button6, #searchBanner, .platforms, #gamertagSearch, .destiny-card{
       opacity: 0;
   }
 
@@ -298,4 +298,6 @@
     padding-left: 2%;
   }
 
-  
+  #button-text{
+      color: white;
+  }
