@@ -8,6 +8,11 @@ $("#post-section").hide()
 
 $(document).ready(function() {
 
+    var introMusic = new Audio("assets/audio/destiny3.mp3")
+    introMusic.volume = 0.80;
+
+    introMusic.play()
+
 
     setTimeout(function() {
         $(".scroll").animate({ 'opacity': '1' }, 1000);

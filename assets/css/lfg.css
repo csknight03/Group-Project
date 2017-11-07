@@ -228,10 +228,8 @@ video {
 position:absolute;
 /* float:left; */
     width:100%;
-    margin-left: 25%;
-    margin-right: 25%;
     min-height:50%;
-    margin-top: 10%;
+    margin-top: 20%;
     background-color: transparent;
     z-index:33;
 }
@@ -239,5 +237,22 @@ position:absolute;
 #video_overlays h1{
     font-size: 88px;
     color: white;
+}
+
+
+.scroll-icon3 {
+    cursor: pointer;
+    color: #f5f5f5;
+    text-shadow: 0px 15px 0px #f5f5f5;
+    font-size: 7em !important;
+    margin-bottom: 5px !important;
+}
+
+.scroll-icon3:hover {
+    cursor: pointer;
+    color: #f5f5f5;
+    text-shadow: 0 0 15px #f5f5f5;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
 }
 
