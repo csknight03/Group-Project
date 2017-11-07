@@ -137,11 +137,14 @@
 .destiny-card {
     background-color: #ECEFF1;
     padding: 0px;
+    position: relative;
 }
 
 .gamertag-title {
-    margin-bottom: -50px;
-    margin-left: 43px;
+    position: absolute!important;
+    top: 1rem!important;
+    left: 7rem;
+    color: white;
 }
 
 .destiny-card-content {
