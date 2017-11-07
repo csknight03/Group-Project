@@ -2,6 +2,9 @@ $("form").hide()
 
 $("#post-section").hide()
 var errorBanner = "<div class='alert alert-danger' role='alert'>No Destiny Player Found!</div>"
+var successBanner = "<div class='alert alert-success' role='alert'><h4 class='alert-heading'>Post Created!</h4></div>"
+
+
 
 function incorrectSearch(){
     $("#errorMessage").html(errorBanner)
@@ -9,6 +12,16 @@ function incorrectSearch(){
         $("#errorMessage").empty();
         $("#errorMessage").html("<br><br>");
     }, 1800);
+
+}
+
+function successMessage(){
+    $("#errorMessage").html(successBanner)
+
+        setTimeout(function() {
+            $("#errorMessage").fadeOut()
+        
+        }, 1500);
 
 }
 
@@ -323,6 +336,7 @@ function addPost(event) {
                 timeZone: userTimeZone
 
             });
+            successMessage()
 
 
         }
