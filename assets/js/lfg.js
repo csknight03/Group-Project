@@ -1,5 +1,3 @@
-
-
 $("form").hide()
 
 $("#post-section").hide()
@@ -27,11 +25,11 @@ $(document).ready(function() {
     }, 900);
 
     var app = document.getElementById('app');
-    
+
     var typewriter = new Typewriter(app, {
         loop: true
     });
-    
+
     typewriter.typeString('Looking For a...')
         .pauseFor(900)
         .deleteChars(3)
@@ -51,7 +49,7 @@ $(document).ready(function() {
         .pauseFor(900)
         .deleteChars(8)
         .start();
- 
+
 })
 
 $(document).ready(function() {
@@ -68,7 +66,7 @@ $(document).ready(function() {
     ///////////////////// //////////////////////Gathering a users Lat and Long //////////////////////////////////////////////////////////////////
 
 
-    
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(successFunction);
     } else {
@@ -79,59 +77,59 @@ $(document).ready(function() {
         lat = position.coords.latitude;
         long = position.coords.longitude;
         condition = true;
-        console.log('Your latitude is :'+lat+' and longitude is '+long);
+        console.log('Your latitude is :' + lat + ' and longitude is ' + long);
 
         var GoogleSettings = {
             "crossDomain": true,
-            "url": "https://maps.googleapis.com/maps/api/timezone/json?location="+lat+","+long+"&timestamp=1331161200&key=" + apiToken,
+            "url": "https://maps.googleapis.com/maps/api/timezone/json?location=" + lat + "," + long + "&timestamp=1331161200&key=" + apiToken,
             "method": "GET",
-          }
+        }
 
-                if(condition === true){
-                        $.ajax(GoogleSettings).done(function(response) {
-                                userTimeZone= response.timeZoneName
-                                console.log(userTimeZone)
+        if (condition === true) {
+            $.ajax(GoogleSettings).done(function(response) {
+                userTimeZone = response.timeZoneName
+                console.log(userTimeZone)
 
-
-                        })
-
-                    }
-            }
-
-
-            
-
-            //////////////////////////////////////////////////  END OF TIMEZONE FUNCTIONS //////////////////////////////////////////////////////
 
             })
 
+        }
+    }
 
 
-            var hashTagActive = "";
-            $("#landing-button").on("click touchstart", function(event) {
 
-                $("#post-section").show()
 
-                if (hashTagActive != this.hash) { //this will prevent if the user click several times the same link to freeze the scroll.
-                    event.preventDefault();
-                    //calculate destination place
-                    var dest = 0;
-                    if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
-                        dest = $(document).height() - $(window).height();
-                    } else {
-                        dest = $(this.hash).offset().top;
-                    }
-                    //go to destination
-                    $('html,body').animate({
-                        scrollTop: dest
-                    }, 600, 'swing');
-                    hashTagActive = this.hash;
-                }
-            
-                $("#landing-page").hide()
-            
-            });
-            
+    //////////////////////////////////////////////////  END OF TIMEZONE FUNCTIONS //////////////////////////////////////////////////////
+
+})
+
+
+
+var hashTagActive = "";
+$("#landing-button").on("click touchstart", function(event) {
+
+    $("#post-section").show()
+
+    if (hashTagActive != this.hash) { //this will prevent if the user click several times the same link to freeze the scroll.
+        event.preventDefault();
+        //calculate destination place
+        var dest = 0;
+        if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
+            dest = $(document).height() - $(window).height();
+        } else {
+            dest = $(this.hash).offset().top;
+        }
+        //go to destination
+        $('html,body').animate({
+            scrollTop: dest
+        }, 600, 'swing');
+        hashTagActive = this.hash;
+    }
+
+    $("#landing-page").hide()
+
+});
+
 
 
 
@@ -144,6 +142,11 @@ $(".scroll").on("click", function() {
 
 
 $("#createPost").on("click", function() {
+    $("form").hide(1000)
+    $(".scroll").animate({ 'opacity': '1' }, 1300);
+})
+
+$("#close-btn").on("click", function() {
     $("form").hide(1000)
     $(".scroll").animate({ 'opacity': '1' }, 1300);
 })
@@ -178,17 +181,17 @@ database.ref().on("child_added", function(snapshot) {
     var classType = user.classType;
     var userMessage = user.userMessage;
     var timeZone = user.timeZone;
-    
 
-    if (mic === 'Yes'){
+
+    if (mic === 'Yes') {
         mic = "<i class='fa fa-microphone' aria-hidden='true' style='color:#5FD2D3'></i>"
-    } else if( mic === 'No' || mic === 'I have a Mic...' ){
+    } else if (mic === 'No' || mic === 'I have a Mic...') {
         mic = "<i class='fa fa-microphone-slash' aria-hidden='true'  style='color: red'></i>"
     }
 
     var col = $("<div>")
     col.addClass("col-4  post-card")
-    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/"+ emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>"+gamertag+"</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>"+mic+"</div><div class='col-sm-4 char-class ' style='color: white; '><h6>"+ classType +"</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red;'>"+ activity+ "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text' id='userMessage' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center' style='padding: 5%;'><div class='col-12'>"+timeZone+"</div><div class='col-12'>Looking For: <span style='color: red;'>"+lookingfor+"</span></div></div></div></div></div>"
+    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/" + emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>" + gamertag + "</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>" + mic + "</div><div class='col-sm-4 char-class ' style='color: white; '><h6>" + classType + "</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red;'>" + activity + "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text' id='userMessage' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center' style='padding: 5%;'><div class='col-12'>" + timeZone + "</div><div class='col-12'>Looking For: <span style='color: red;'>" + lookingfor + "</span></div></div></div></div></div>"
     col.append(newCard)
     $("#submittedPosts").prepend(col)
     $(".card").fadeIn(1000)
@@ -267,7 +270,7 @@ function addPost(event) {
                 gamertag = gamertag.replace("%20", " ")
             }
 
-                    
+
 
 
             database.ref().push({
