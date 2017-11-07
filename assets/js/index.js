@@ -6,8 +6,8 @@ var userPlatform;
 var character1;
 var character2;
 var character3;
-var introMusic = new Audio("assets/audio/intro.mp3")
-introMusic.volume = 0.09;
+var introMusic = new Audio("assets/audio/warmind.mp3")
+introMusic.volume = 0.50;
 
 $(document).ready(function() {
     introMusic.play()
@@ -66,14 +66,24 @@ $("#section-1-button").on("click touchstart", function(event) {
     setTimeout(function() {
         $("#button1").animate({ 'opacity': '1' }, 1700);
     }, 1000);
+    setTimeout(function() {
+        $("#button4").animate({ 'opacity': '1' }, 1700);
+    }, 1000);
 
     setTimeout(function() {
         $("#button2").animate({ 'opacity': '1' }, 1700);
+    }, 1400);
+    setTimeout(function() {
+        $("#button5").animate({ 'opacity': '1' }, 1700);
     }, 1400);
 
     setTimeout(function() {
         $("#button3").animate({ 'opacity': '1' }, 1700);
     }, 1800);
+    setTimeout(function() {
+        $("#button6").animate({ 'opacity': '1' }, 1700);
+    }, 1800);
+
 
     setTimeout(function() {
         $(".diamond-shape").addClass("pulse");
