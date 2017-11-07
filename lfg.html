@@ -45,7 +45,7 @@
                 <h1 style="color: white;">Looking For Group</h1>
             </div>
             <div class="col-sm-12 text-center">
-                <p class="white-text text-white">Select The Guardians Gaming Console</p>
+                <div id="errorMessage"><br><br></div>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
 
 
                 <form>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="gamertag">Gamertag</label>
@@ -66,30 +66,29 @@
                             </div>
                         </div>
 
-                        <div class="col-6">
-                            <select class="form-control form-control-sm" id="activity">
-                <option>Raid</option>
-                <option>Story</option>
-                <option>Trials</option>
-                <option>PVP</option>
-              </select>
+                        <div class="col-3 justify-content-center">
+                            <select class="form-control form-control-sm" id="console">
+                                <option>Xbox</option>
+                                <option>PSN</option>
+                            </select>
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-3">
+                            <select class="form-control form-control-sm" id="activity">
+                                <option>Raid</option>
+                                <option>Story</option>
+                                <option>Trials</option>
+                                <option>PVP</option>
+                            </select>
+                        </div>
+
+                        <div class="col-3">
                             <select class="form-control form-control-sm" id="lookingfor">
                         <option>Looking For...</option>
                         <option>Sherpa</option>
                         <option>Similar Skill</option>
                         <option>Anyone</option>
                       </select>
-                        </div>
-
-                        <div class="col-12">
-                            <br>
-                            <div class="form-group">
-                                <label for="userMessage">Enter Your Message</label>
-                                <textarea class="form-control" id="userMessage" rows="3"></textarea>
-                            </div>
                         </div>
 
                         <div class="col-3">
@@ -99,6 +98,18 @@
                         <option>No</option>
                       </select>
                         </div>
+
+                        
+
+                        <div class="col-12">
+                            <br>
+                            <div class="form-group">
+                                <label for="userMessage">Enter Your Message</label>
+                                <textarea class="form-control" id="userMessage" rows="3"></textarea>
+                            </div>
+                        </div>
+
+
 
                     </div>
                     <br>

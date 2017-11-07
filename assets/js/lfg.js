@@ -1,10 +1,20 @@
 $("form").hide()
 
 $("#post-section").hide()
+var errorBanner = "<div class='alert alert-danger' role='alert'>No Destiny Player Found!</div>"
 
+function incorrectSearch(){
+    $("#errorMessage").html(errorBanner)
+    setTimeout(function() {
+        $("#errorMessage").empty();
+        $("#errorMessage").html("<br><br>");
+    }, 1800);
+
+}
 
 
 $(document).ready(function() {
+
 
     var introMusic = new Audio("assets/audio/destiny3.mp3")
     introMusic.volume = 0.80;
@@ -184,6 +194,11 @@ database.ref().on("child_added", function(snapshot) {
     var classType = user.classType;
     var userMessage = user.userMessage;
     var timeZone = user.timeZone;
+    
+
+    if(lookingfor === "Looking For..."){
+        lookingfor = "Did Not Specify"
+    }
 
 
     if (mic === 'Yes') {
@@ -194,7 +209,7 @@ database.ref().on("child_added", function(snapshot) {
 
     var col = $("<div>")
     col.addClass("col-4  post-card")
-    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/" + emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>" + gamertag + "</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>" + mic + "</div><div class='col-sm-4 char-class ' style='color: white; '><h6>" + classType + "</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red; font-size: 25px;'>" + activity + "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text' id='userMessage' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center bottom-row' style='padding: 5%;'><div class='col-12'>" + timeZone + "</div><div class='col-12'>Looking For: <span style='color: red;'>" + lookingfor + "</span></div></div></div></div></div>"
+    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/" + emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>" + gamertag + "</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>" + mic + "</div><div class='col-sm-4 char-class ' style='color: white; '><h6>" + classType + "</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red; font-size: 25px;'>" + activity + "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text userMessageOutput' id='userMessage ' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center bottom-row' style='padding: 5%;'><div class='col-12'>" + timeZone + "</div><div class='col-12'>Looking For: <span style='color: red;'>" + lookingfor + "</span></div></div></div></div></div>"
 
     col.append(newCard)
     $("#submittedPosts").prepend(col)
@@ -213,8 +228,14 @@ function addPost(event) {
     event.preventDefault()
 
     var gamertag = $("#gamertag").val()
-    var userPlatform = 1;
+    var userPlatform = $("#console").val();
     var apiToken = 'e682b2e62ff9487d908264a092599b61';
+
+    if (userPlatform === "Xbox"){
+        userPlatform = 1
+    } else if(userPlatform === "PSN"){
+        userPlatform = 2
+    }
 
     var settings = {
         "crossDomain": true,
@@ -227,6 +248,11 @@ function addPost(event) {
 
 
     $.ajax(settings).done(function(response) {
+
+        if(response.Response[0] == undefined){
+            incorrectSearch()
+         }else {
+
         var membershipid = response.Response[0].membershipId
             // console.log(response)
             // console.log(membershipid)
@@ -242,6 +268,10 @@ function addPost(event) {
 
 
         $.ajax(characterIds).done(function(response) {
+            if(response.ErrorStatus === 'DestinyAccountNotFound'){
+                incorrectSearch()
+            }else{
+
             var chars = response.Response.characters.data
             var key = Object.keys(chars)[0]
             var char = chars[key]
@@ -291,9 +321,10 @@ function addPost(event) {
             });
 
 
-
+        }
 
         })
+    }
     });
 
 
