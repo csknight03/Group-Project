@@ -1,7 +1,11 @@
+
+
 $("form").hide()
 
 
+
 $(document).ready(function() {
+
 
     setTimeout(function() {
         $(".scroll").animate({ 'opacity': '1' }, 1000);
@@ -10,6 +14,11 @@ $(document).ready(function() {
     setTimeout(function() {
         $("#lfgBanner").animate({ 'opacity': '1' }, 1000);
     }, 900);
+
+    setTimeout(function() {
+        $("#video_overlays").animate({ 'opacity': '1' }, 1000);
+    }, 900);
+ 
 })
 
 $(document).ready(function() {
