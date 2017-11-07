@@ -211,6 +211,15 @@ database.ref().on("child_added", function(snapshot) {
     var classType = user.classType;
     var userMessage = user.userMessage;
     var timeZone = user.timeZone;
+    var platform = user.platform;
+
+    if(platform === 'Xbox'){
+          platform = "<img class='console-images' src= http://assets.stickpng.com/thumbs/58482958cef1014c0b5e49fa.png>"
+    } else  if(platform === 'PSN'){
+        platform = "<img class='console-images-2' src= http://www.pngmart.com/files/4/Playstation-Transparent-Background.png>"
+    }
+
+ 
     
 
     if(lookingfor === "Looking For..."){
@@ -226,7 +235,8 @@ database.ref().on("child_added", function(snapshot) {
 
     var col = $("<div>")
     col.addClass("col-4  post-card")
-    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/" + emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>" + gamertag + "</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>" + mic + "</div><div class='col-sm-4 char-class ' style='color: white; '><h6>" + classType + "</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red; font-size: 25px;'>" + activity + "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text userMessageOutput' id='userMessage ' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center bottom-row' style='padding: 5%;'><div class='col-12'>" + timeZone + "</div><div class='col-12'>Looking For: <span style='color: red;'>" + lookingfor + "</span></div></div></div></div></div>"
+    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/" + emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>" + gamertag + "</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>" + mic + "</div><div class='col-sm-4 char-class ' style='color: white; '><h6>" + classType + "</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red; font-size: 25px;'>" + activity + "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text userMessageOutput' id='userMessage ' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center bottom-row' style='padding: 5%;'><div class='col-12'>" + timeZone + "</div><div class='col-12'>Looking For: <span style='color: red;'>" + lookingfor + "</span></div><div class='col-12 platform-name' id='platform-name'>"+platform+"</div></div></div></div></div>"
+
 
     col.append(newCard)
     $("#submittedPosts").prepend(col)
@@ -249,8 +259,10 @@ function addPost(event) {
     var apiToken = 'e682b2e62ff9487d908264a092599b61';
 
     if (userPlatform === "Xbox"){
+        var platformName = userPlatform
         userPlatform = 1
     } else if(userPlatform === "PSN"){
+        var platformName = userPlatform
         userPlatform = 2
     }
 
@@ -333,7 +345,8 @@ function addPost(event) {
                 emblemBackground: emblemBackground,
                 classType: classType,
                 userMessage: userMessage,
-                timeZone: userTimeZone
+                timeZone: userTimeZone,
+                platform: platformName
 
             });
             successMessage()
