@@ -106,9 +106,10 @@ function characterFind() {
                                         + "<div class='card-body'><h4 class='card-title gamertag-title'>" + gamertag + "</h4>"
                                         + "<div class='destiny-card-content' id='card-content'> <p class='card-text classType text-center class-icon-" + characterID + "'>" 
                                         + classType + "</p> <p class='light-symbol text-center'>✦ <span class='lightLevel'>" + light 
-                                        + "</span></p><br><p class='text-center time-played'>Time Played: " + minutesPlayed + " minutes</p>"
-                                        + "<div class='stats-text' id='games-played-" + characterID + "'></div>"
-                                        + "<div class='stats-text' id='win-percentage-" + characterID + "'></div>"
+                                        + "</span></p><br>"
+                                        // <p class='text-center time-played'>Time Played: " + minutesPlayed + " minutes</p>
+                                        // + "<div class='container diamond-shape3'><div class='item-count3 stats-text' id='games-played-" + characterID + "'></div></div>"
+                                        + "<div class='container diamond-shape3'><div class='item-count3 stats-text' id='win-percentage-" + characterID + "'></div></div>"
                                         + "</div></div></div></div>"
                                         
                                         $("#characters").append(newCard);
@@ -147,9 +148,10 @@ function characterFind() {
                                                                     
                                                                     console.log(gamesPlayed)
                                                                     console.log(characterID)
+                                                                    console.log(stats)
 
-                                                                    $("#games-played-" + characterID).text("Games Played: " + gamesPlayed);
-                                                                    $("#win-percentage-" + characterID).text("Win Percentage: " + (wpRounded * 100) + "%");
+                                                                    // $("#games-played-" + characterID).html("<span style='font-size: 9px;'>Games Played:</span><br>" + gamesPlayed);
+                                                                    $("#win-percentage-" + characterID).html("<span style='font-size: 18px;'>Win %</span><br>" + (wpRounded * 100) + "%");
 
 
                                                                 })
