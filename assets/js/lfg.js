@@ -2,6 +2,8 @@
 
 $("form").hide()
 
+$("#post-section").hide()
+
 
 
 $(document).ready(function() {
@@ -71,6 +73,34 @@ $(document).ready(function() {
             //////////////////////////////////////////////////  END OF TIMEZONE FUNCTIONS //////////////////////////////////////////////////////
 
             })
+
+
+
+            var hashTagActive = "";
+            $("#landing-button").on("click touchstart", function(event) {
+
+                $("#post-section").show()
+
+                if (hashTagActive != this.hash) { //this will prevent if the user click several times the same link to freeze the scroll.
+                    event.preventDefault();
+                    //calculate destination place
+                    var dest = 0;
+                    if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
+                        dest = $(document).height() - $(window).height();
+                    } else {
+                        dest = $(this.hash).offset().top;
+                    }
+                    //go to destination
+                    $('html,body').animate({
+                        scrollTop: dest
+                    }, 600, 'swing');
+                    hashTagActive = this.hash;
+                }
+            
+                $("#landing-page").hide()
+            
+            });
+            
 
 
 

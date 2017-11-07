@@ -7,7 +7,7 @@ var character1;
 var character2;
 var character3;
 var introMusic = new Audio("assets/audio/warmind.mp3")
-introMusic.volume = 0.09;
+introMusic.volume = 0.50;
 
 $(document).ready(function() {
     introMusic.play()
