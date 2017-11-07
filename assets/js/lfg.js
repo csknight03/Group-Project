@@ -228,7 +228,7 @@ database.ref().on("child_added", function(snapshot) {
 
 
     if (mic === 'Yes') {
-        mic = "<i class='fa fa-microphone' aria-hidden='true' style='color:#5FD2D3'></i>"
+        mic = "<i class='fa fa-microphone' aria-hidden='true' style='color: white'></i>"
     } else if (mic === 'No' || mic === 'I have a Mic...') {
         mic = "<i class='fa fa-microphone-slash' aria-hidden='true'  style='color: red'></i>"
     }
