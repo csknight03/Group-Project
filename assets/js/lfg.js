@@ -123,7 +123,13 @@ $("#landing-button").on("click touchstart", function(event) {
         hashTagActive = this.hash;
     }
 
+    setTimeout(function() {
+        $("#lfgBanner").animate({ 'opacity': '1' }, 1750);
+    }, 1150);
+
     $("#landing-page").hide()
+
+
 
 });
 
