@@ -19,10 +19,6 @@ $(document).ready(function() {
     }, 1500);
 
     setTimeout(function() {
-        $("#lfgBanner").animate({ 'opacity': '1' }, 1000);
-    }, 900);
-
-    setTimeout(function() {
         $("#video_overlays").animate({ 'opacity': '1' }, 1000);
     }, 900);
 
@@ -127,6 +123,9 @@ $(document).ready(function() {
                     }, 600, 'swing');
                     hashTagActive = this.hash;
                 }
+                setTimeout(function() {
+                    $("#lfgBanner").animate({ 'opacity': '1' }, 1800);
+                }, 900);
             
                 $("#landing-page").hide()
             
@@ -188,7 +187,7 @@ database.ref().on("child_added", function(snapshot) {
 
     var col = $("<div>")
     col.addClass("col-4  post-card")
-    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/"+ emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>"+gamertag+"</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>"+mic+"</div><div class='col-sm-4 char-class ' style='color: white; '><h6>"+ classType +"</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red;'>"+ activity+ "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text' id='userMessage' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center' style='padding: 5%;'><div class='col-12'>"+timeZone+"</div><div class='col-12'>Looking For: <span style='color: red;'>"+lookingfor+"</span></div></div></div></div></div>"
+    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/"+ emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>"+gamertag+"</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>"+mic+"</div><div class='col-sm-4 char-class ' style='color: white; '><h6>"+ classType +"</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red; font-size: 25px;'>"+ activity+ "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text' id='userMessage' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center bottom-row' style='padding: 5%;'><div class='col-12'>"+timeZone+"</div><div class='col-12'>Looking For: <span style='color: red;'>"+lookingfor+"</span></div></div></div></div></div>"
     col.append(newCard)
     $("#submittedPosts").prepend(col)
     $(".card").fadeIn(1000)
