@@ -187,7 +187,7 @@ i {
     height: 100vh;
 }
 
-#video_box{
+#video_box {
     float:left;
     position: fixed;
     top: 65%;
@@ -233,7 +233,7 @@ position:absolute;
     min-height:50%;
     margin-top: 10%;
     background-color: transparent;
-    z-index:300000;
+    z-index:33;
 }
 
 #video_overlays h1{
