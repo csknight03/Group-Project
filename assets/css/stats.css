@@ -20,6 +20,14 @@ background-color: #333;
 width: 80%;
 }
 
+#searchBanner,
+#searchButton,
+#gamertagSearch,
+#characters,
+.platforms{
+  opacity: 0;
+}
+
 .card-img-caption {
   border-top-left-radius: calc(.25rem - 1px);
   border-top-right-radius: calc(.25rem - 1px);
@@ -37,6 +45,10 @@ width: 80%;
   margin: 4% 0;
   position: absolute;
   z-index: 1;
+}
+
+#searchBanner {
+    background-color: rgba(30, 30, 30, 0.8);
 }
 
 .section-landing{
@@ -287,16 +299,13 @@ width: 80%;
 
 
   .diamond-shape2 {
-    background: #5FD2D3;
+    background-color: rgba(30, 30, 30, 0.8);
     height: 175px;
     text-align: center;
-    transform:rotate(45deg);
-      width: 175px;
-      border: 2px solid white;
+    transform: rotate(45deg);
+    width: 175px;
+    border: 2px solid white;
   }
-
-
-
   
   .item-count2 {
     color: white;
@@ -309,8 +318,8 @@ width: 80%;
   }
 
   .diamond-shape2:hover{
-      background-color: transparent;
-      border: 2px solid #5FD2D3;
+    background-color: transparent;
+    border: 2px solid #5FD2D3;
   }
 
   .item-count2:hover{
