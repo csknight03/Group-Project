@@ -6,8 +6,8 @@ var userPlatform;
 var character1;
 var character2;
 var character3;
-var introMusic = new Audio("assets/audio/intro.mp3")
-introMusic.volume = 0.09;
+var introMusic = new Audio("assets/audio/No Mercy.mp3")
+introMusic.volume = 0.50;
 
 
 
@@ -17,34 +17,74 @@ $(document).ready(function() {
     introMusic.play()
     $("#gamertagSearch").hide()
     $("#searchButton").hide()
+    $("#restartButton").hide()
     $("#section-2").hide()
     $("#section-landing").hide()
+        setTimeout(function() {
+        $("#searchBanner").animate({ 'opacity': '1' }, 1000);
+    }, 900);
     setTimeout(function() {
-        $(".d2-logo").animate({ 'opacity': '1' }, 3700);
-    }, 1000);
-    setTimeout(function() {
-        $(".scroll").animate({ 'opacity': '1' }, 1000);
-    }, 4500);
-        $(".diamond-shape2").addClass("pulse");   
+        $(".platforms").animate({ 'opacity': '1' }, 1000);
+    }, 2000);
+//     setTimeout(function() {
+//         $(".d2-logo").animate({ 'opacity': '1' }, 3700);
+//     }, 1000);
+//     setTimeout(function() {
+//         $(".scroll").animate({ 'opacity': '1' }, 1000);
+//     }, 4500);
+//         $(".diamond-shape2").addClass("pulse");   
 });
+
+function restartSearch() {
+    $("#gamertagSearch").hide()
+    $("#searchButton").hide()
+    $("#restartButton").hide()
+    $("#section-2").hide()
+    $("#section-landing").hide()
+    $("#characters").empty()
+    $("#characters").animate({ 'opacity': '0' });
+        setTimeout(function() {
+        $("#searchBanner").animate({ 'opacity': '1' }, 1000);
+    }, 900);
+    setTimeout(function() {
+        $(".platforms").show().animate({ 'opacity': '1' }, 1000);
+    });
+}
 
 
 
 $(".console-images").on("click", function(event) {
     event.preventDefault()
     userPlatform = $(this).attr("data")
-    $(".platforms").hide()
-    $("#searchButton").show()
-    $("#gamertagSearch").show()
+    setTimeout(function() {
+        $(".platforms").animate({ 'opacity': '0' }, 1000);
+    });
+    setTimeout(function() {
+        $(".platforms").hide();
+    }, 900);
+    setTimeout(function() {
+        $("#searchButton").show().animate({ 'opacity': '1' }, 1000);
+    }, 1000);
+    setTimeout(function() {
+        $("#restartButton").show().animate({ 'opacity': '1' }, 1000);
+    }, 1000);
+    setTimeout(function() {
+        $("#gamertagSearch").show().animate({ 'opacity': '1' }, 1000);
+    }, 1000);
 })
 
 
 $("#searchButton").on("click", function() {
+    $("#characters").animate({ 'opacity': '0' });
     gamertag = $("#gamertag").val()
     for (i = 0; i < gamertag.length; i++) {
         gamertag = gamertag.replace(" ", "%20")
     }
     characterFind();
+})
+
+$("#restartButton").on("click", function() {
+    restartSearch();
 })
 
 // $("#searchButton").on("click", characterFind)
@@ -113,6 +153,11 @@ function characterFind() {
                 + "</div></div></div></div>"
                 
                 $("#characters").append(newCard);
+
+                setTimeout(function() {
+                    $("#characters").animate({ 'opacity': '1' }, 1000);
+                });
+                
             
             var characterStat = {
                 crossDomain: true,
