@@ -5,7 +5,38 @@ body {
     -o-background-size: cover;
     background-size: cover;
     height: 100vh;
-    background-color: black;
+    /*background-color: black;*/
+}
+
+hr{
+  margin-bottom: 0rem;
+}
+
+hr.thin {
+height: 1px;
+border: 0;
+color: #333;
+background-color: #333;
+width: 80%;
+}
+
+.card-img-caption {
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+}
+  
+.card-img-caption .card-img-top {
+  z-index: 0;
+}
+    
+.card-img-caption .card-text {
+  text-align: right;
+  padding-right: 15px;
+  font-size: 26px;
+  width: 100%;
+  margin: 4% 0;
+  position: absolute;
+  z-index: 1;
 }
 
 .section-landing{
@@ -43,6 +74,24 @@ body {
 
 .stat{
   color: white;
+}
+
+.stats-row{
+  float: left;
+  padding: 14px;
+  padding-top: 6px;
+  font-size: 21px;
+  color: white;
+  line-height: 1;
+}
+
+.weapon-row{
+  color: white;
+  padding: 10px;
+}
+
+.fillheight {
+    max-width: 100%;
 }
 
 .fa-pulse2 {
@@ -295,3 +344,6 @@ body {
       opacity: 0;
   }
 
+  body{
+    font-family: 'Roboto', sans-serif;
+}

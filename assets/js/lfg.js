@@ -1,10 +1,33 @@
 $("form").hide()
 
 $("#post-section").hide()
+var errorBanner = "<div class='alert alert-danger' role='alert'>No Destiny Player Found!</div>"
+var successBanner = "<div class='alert alert-success' role='alert'><h4 class='alert-heading'>Post Created!</h4></div>"
 
+
+
+function incorrectSearch(){
+    $("#errorMessage").html(errorBanner)
+    setTimeout(function() {
+        $("#errorMessage").empty();
+        $("#errorMessage").html("<br><br>");
+    }, 1800);
+
+}
+
+function successMessage(){
+    $("#errorMessage").html(successBanner)
+
+        setTimeout(function() {
+            $("#errorMessage").fadeOut()
+        
+        }, 1500);
+
+}
 
 
 $(document).ready(function() {
+
 
     var introMusic = new Audio("assets/audio/destiny3.mp3")
     introMusic.volume = 0.80;
@@ -17,37 +40,37 @@ $(document).ready(function() {
     }, 1500);
 
     setTimeout(function() {
-        $("#lfgBanner").animate({ 'opacity': '1' }, 1000);
-    }, 900);
-
-    setTimeout(function() {
         $("#video_overlays").animate({ 'opacity': '1' }, 1000);
     }, 900);
 
     var app = document.getElementById('app');
+    var app2 = document.getElementById('app2');
 
     var typewriter = new Typewriter(app, {
         loop: true
     });
 
-    typewriter.typeString('Looking For a...')
+    typewriter.pauseFor(1300).typeString('Looking for another')
         .pauseFor(900)
-        .deleteChars(3)
+        .deleteChars(6)
         .typeString(' Raid Group')
         .pauseFor(900)
         .deleteChars(11)
         .typeString(' Trials God')
         .pauseFor(900)
         .deleteChars(11)
-        .typeString(' Companion!')
+        .typeString(' Companion')
         .pauseFor(900)
-        .deleteChars(10)
+        .deleteChars(9)
         .typeString(' Scrub!')
         .pauseFor(900)
         .deleteChars(7)
         .typeString(' Sherpa!')
         .pauseFor(900)
         .deleteChars(8)
+        .typeString(' Friendly Voice')
+        .pauseFor(900)
+        .deleteChars(15)
         .start();
 
 })
@@ -105,6 +128,7 @@ $(document).ready(function() {
 
 
 
+
 var hashTagActive = "";
 $("#landing-button").on("click touchstart", function(event) {
 
@@ -126,7 +150,13 @@ $("#landing-button").on("click touchstart", function(event) {
         hashTagActive = this.hash;
     }
 
+    setTimeout(function() {
+        $("#lfgBanner").animate({ 'opacity': '1' }, 1750);
+    }, 1150);
+
     $("#landing-page").hide()
+
+
 
 });
 
@@ -181,17 +211,33 @@ database.ref().on("child_added", function(snapshot) {
     var classType = user.classType;
     var userMessage = user.userMessage;
     var timeZone = user.timeZone;
+    var platform = user.platform;
+
+    if(platform === 'Xbox'){
+          platform = "<img class='console-images' src= http://assets.stickpng.com/thumbs/58482958cef1014c0b5e49fa.png>"
+    } else  if(platform === 'PSN'){
+        platform = "<img class='console-images-2' src= http://www.pngmart.com/files/4/Playstation-Transparent-Background.png>"
+    }
+
+ 
+    
+
+    if(lookingfor === "Looking For..."){
+        lookingfor = "Did Not Specify"
+    }
 
 
     if (mic === 'Yes') {
-        mic = "<i class='fa fa-microphone' aria-hidden='true' style='color:#5FD2D3'></i>"
+        mic = "<i class='fa fa-microphone' aria-hidden='true' style='color: white'></i>"
     } else if (mic === 'No' || mic === 'I have a Mic...') {
         mic = "<i class='fa fa-microphone-slash' aria-hidden='true'  style='color: red'></i>"
     }
 
     var col = $("<div>")
     col.addClass("col-4  post-card")
-    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/" + emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>" + gamertag + "</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>" + mic + "</div><div class='col-sm-4 char-class ' style='color: white; '><h6>" + classType + "</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red;'>" + activity + "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text' id='userMessage' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center' style='padding: 5%;'><div class='col-12'>" + timeZone + "</div><div class='col-12'>Looking For: <span style='color: red;'>" + lookingfor + "</span></div></div></div></div></div>"
+    var newCard = "<div class='card' style='width: 20rem; background-color: rgba(30, 30, 30, 0.8);'><div class='card-img-top  justify-content-center text-center'  style= 'background-image: url(http://bungie.net/" + emblemBackground + ")'><div class='row   justify-content-center text-center'><div class='col-sm-12'><div class='card-title'><h4>" + gamertag + "</h4></div></div></div><div class='row justify-content-center text-center' style='margin-top: 1rem;'><div class='col-sm-4' style='font-size: 20px;'>" + mic + "</div><div class='col-sm-4 char-class ' style='color: white; '><h6>" + classType + "</h6></div><div class='col-sm-4 ' style='color: gold; '><h6>✦ <span class='lightLevel'>" + lightLevel + "</span></h6></div><div class='col-12' style='color: red; font-size: 25px;'>" + activity + "<hr></div><hr></div></div><div class='card-block ' style='color: white; '><p class='card-text userMessageOutput' id='userMessage ' style='margin-top: 50%;'>" + userMessage + "</p></div><hr><div class='row justify-content-center text-center bottom-row' style='padding: 5%;'><div class='col-12'>" + timeZone + "</div><div class='col-12'>Looking For: <span style='color: red;'>" + lookingfor + "</span></div><div class='col-12 platform-name' id='platform-name'>"+platform+"</div></div></div></div></div>"
+
+
     col.append(newCard)
     $("#submittedPosts").prepend(col)
     $(".card").fadeIn(1000)
@@ -209,8 +255,16 @@ function addPost(event) {
     event.preventDefault()
 
     var gamertag = $("#gamertag").val()
-    var userPlatform = 1;
+    var userPlatform = $("#console").val();
     var apiToken = 'e682b2e62ff9487d908264a092599b61';
+
+    if (userPlatform === "Xbox"){
+        var platformName = userPlatform
+        userPlatform = 1
+    } else if(userPlatform === "PSN"){
+        var platformName = userPlatform
+        userPlatform = 2
+    }
 
     var settings = {
         "crossDomain": true,
@@ -223,6 +277,11 @@ function addPost(event) {
 
 
     $.ajax(settings).done(function(response) {
+
+        if(response.Response[0] == undefined){
+            incorrectSearch()
+         }else {
+
         var membershipid = response.Response[0].membershipId
             // console.log(response)
             // console.log(membershipid)
@@ -238,6 +297,10 @@ function addPost(event) {
 
 
         $.ajax(characterIds).done(function(response) {
+            if(response.ErrorStatus === 'DestinyAccountNotFound'){
+                incorrectSearch()
+            }else{
+
             var chars = response.Response.characters.data
             var key = Object.keys(chars)[0]
             var char = chars[key]
@@ -282,14 +345,17 @@ function addPost(event) {
                 emblemBackground: emblemBackground,
                 classType: classType,
                 userMessage: userMessage,
-                timeZone: userTimeZone
+                timeZone: userTimeZone,
+                platform: platformName
 
             });
+            successMessage()
 
 
-
+        }
 
         })
+    }
     });
 
 

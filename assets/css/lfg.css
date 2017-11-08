@@ -145,13 +145,19 @@ form {
     background-color: rgba(30, 30, 30, 0.8);
     color: white;
     border: 1px solid white;
-    min-height: 300px;
-    max-height: 300px;
+    min-height: 350px;
+    max-height: 350px;
+    position: relative;
 }
 
 #userMessage {
     color: #5FD2D3!important;
-    padding: 2%;
+
+}
+
+.userMessageOutput{
+    padding-left: 8%;
+    padding-right: 8%
 }
 
 .gamertag-title {}
@@ -226,6 +232,7 @@ video {
 #close-btn {
     vertical-align: middle;
     text-shadow: 2px 2px 3px #5FD2D3;
+    font-size: 43px;
 }
 
 #video_overlays {
@@ -257,4 +264,25 @@ video {
     text-shadow: 0 0 15px #f5f5f5;
     -webkit-transition-duration: 0.5s;
     transition-duration: 0.5s;
+}
+
+.bottom-row{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+#app{
+    font-family: 'Special Elite', cursive;
+}
+
+.console-images{
+    width: 40px;
+}
+.console-images-2{
+    width: 49px;
 }
