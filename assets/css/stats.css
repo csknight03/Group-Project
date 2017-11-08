@@ -1,10 +1,10 @@
 body {
     background: url(http://www.paperbirchwine.com/wp-content/uploads/2016/07/Destiny-Wallpaper.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
+    /*-webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100vh;
+    height: 100vh;*/
     /*background-color: black;*/
 }
 
