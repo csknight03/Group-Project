@@ -33,7 +33,8 @@ $(document).ready(function() {
         }, 4500);
   
  }else{
-        $("#section-2").hide()
+
+    
         $(".d2-logo").animate({ 'opacity': '1' }, 100);
         $(".scroll").animate({ 'opacity': '1' }, 100);
         $("#button1").animate({ 'opacity': '1' }, 100);
@@ -43,6 +44,10 @@ $(document).ready(function() {
         $("#button3").animate({ 'opacity': '1' }, 100);
         $("#button6").animate({ 'opacity': '1' }, 100);
         $(".diamond-shape").addClass("pulse");
+
+        $("#searchBanner").animate({ 'opacity': '1' }, 100);
+        $(".platforms").animate({ 'opacity': '1' }, 100);
+
 
  }
 
