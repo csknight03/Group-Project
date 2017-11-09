@@ -145,13 +145,19 @@ form {
     background-color: rgba(30, 30, 30, 0.8);
     color: white;
     border: 1px solid white;
-    min-height: 300px;
-    max-height: 300px;
+    min-height: 350px;
+    max-height: 350px;
+    position: relative;
 }
 
 #userMessage {
     color: #5FD2D3!important;
-    padding: 2%;
+
+}
+
+.userMessageOutput{
+    padding-left: 8%;
+    padding-right: 8%
 }
 
 .gamertag-title {}
@@ -170,10 +176,11 @@ form {
     width: 100%;
 }
 
-.card-title{
+.card-title {
     margin-top: 1rem;
 }
-.char-class{
+
+.char-class {
     margin-bottom: 0.25rem;
     margin-left: auto;
     margin-right: auto;
@@ -183,12 +190,12 @@ i {
     font-size: 20px;
 }
 
-.landing-page{
+.landing-page {
     height: 100vh;
 }
 
 #video_box {
-    float:left;
+    float: left;
     position: fixed;
     top: 65%;
     left: 50%;
@@ -202,7 +209,7 @@ i {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     background: url(polina.jpg) no-repeat;
-    background-size: cover; 
+    background-size: cover;
 }
 
 video {
@@ -219,25 +226,63 @@ video {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     background: url(polina.jpg) no-repeat;
-    background-size: cover; 
+    background-size: cover;
 }
 
-
+#close-btn {
+    vertical-align: middle;
+    text-shadow: 2px 2px 3px #5FD2D3;
+    font-size: 43px;
+}
 
 #video_overlays {
-position:absolute;
-/* float:left; */
-    width:100%;
-    margin-left: 25%;
-    margin-right: 25%;
-    min-height:50%;
-    margin-top: 10%;
+    position: absolute;
+    /* float:left; */
+    width: 100%;
+    min-height: 50%;
+    margin-top: 20%;
     background-color: transparent;
-    z-index:33;
+    z-index: 33;
 }
 
-#video_overlays h1{
+#video_overlays h1 {
     font-size: 88px;
     color: white;
 }
 
+.scroll-icon3 {
+    cursor: pointer;
+    color: #f5f5f5;
+    text-shadow: 0px 15px 0px #f5f5f5;
+    font-size: 7em !important;
+    margin-bottom: 5px !important;
+}
+
+.scroll-icon3:hover {
+    cursor: pointer;
+    color: #f5f5f5;
+    text-shadow: 0 0 15px #f5f5f5;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.bottom-row{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+#app{
+    font-family: 'Special Elite', cursive;
+}
+
+.console-images{
+    width: 40px;
+}
+.console-images-2{
+    width: 49px;
+}
