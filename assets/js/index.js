@@ -9,22 +9,45 @@ var character3;
 var introMusic = new Audio("assets/audio/warmind.mp3")
 introMusic.volume = 0.50;
 var errorBanner = "<div class='alert alert-danger' role='alert'>No Destiny Player Found!</div>"
+var visited = false
+visited = localStorage.getItem("visited")
 
+console.log("User has visited", visited)
 
 $(document).ready(function() {
     introMusic.play()
-    $("#searchButton").hide()
-    $("#section-2").hide()
-    $("#section-landing").hide()
-    setTimeout(function() {
-        $(".d2-logo").animate({ 'opacity': '1' }, 3700);
-    }, 1000);
-    setTimeout(function() {
-        $(".scroll").animate({ 'opacity': '1' }, 1000);
-    }, 4500);
 
+    if( visited === null){
+        console.log("It's false")
+        $("#section-2").show()
+    
+    
+        $("#searchButton").hide()
+        $("#section-2").hide()
+        $("#section-landing").hide()
+        setTimeout(function() {
+            $(".d2-logo").animate({ 'opacity': '1' }, 3700);
+        }, 1000);
+        setTimeout(function() {
+            $(".scroll").animate({ 'opacity': '1' }, 1000);
+        }, 4500);
+  
+ }else{
+        $("#section-2").hide()
+        $(".d2-logo").animate({ 'opacity': '1' }, 100);
+        $(".scroll").animate({ 'opacity': '1' }, 100);
+        $("#button1").animate({ 'opacity': '1' }, 100);
+        $("#button4").animate({ 'opacity': '1' }, 100);
+        $("#button2").animate({ 'opacity': '1' }, 100);
+        $("#button5").animate({ 'opacity': '1' }, 100);
+        $("#button3").animate({ 'opacity': '1' }, 100);
+        $("#button6").animate({ 'opacity': '1' }, 100);
+        $(".diamond-shape").addClass("pulse");
+
+ }
 
 });
+
 
 function incorrectSearch() {
     $("#errorMessage").html(errorBanner)
@@ -99,6 +122,10 @@ $("#section-1-button").on("click touchstart", function(event) {
     setTimeout(function() {
         $(".diamond-shape").addClass("pulse");
     }, 2000);
+
+
+    localStorage.setItem('visted', true)
+    localStorage.visited = true;
 
 
 });
