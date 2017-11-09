@@ -354,3 +354,18 @@ a {
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #5FD2D3;
+   
+}
+
+a {
+    color: #5FD2D3;
+}
+
+a:hover{
+    color: white;
+}
