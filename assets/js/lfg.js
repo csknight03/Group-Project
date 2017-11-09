@@ -83,7 +83,7 @@ $(document).ready(function() {
     var lat;
     var long;
     var condition = false;
-    var userTimezone;
+    var userTimezone = 'Unspecified Location'
 
 
     ///////////////////// //////////////////////Gathering a users Lat and Long //////////////////////////////////////////////////////////////////
@@ -92,11 +92,15 @@ $(document).ready(function() {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(successFunction);
+        userTimeZone = 'Unspecified Location'
+    
+    console.log(userTimeZone)
     } else {
         alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
     }
 
     function successFunction(position) {
+
         lat = position.coords.latitude;
         long = position.coords.longitude;
         condition = true;
@@ -109,6 +113,7 @@ $(document).ready(function() {
         }
 
         if (condition === true) {
+
             $.ajax(GoogleSettings).done(function(response) {
                 userTimeZone = response.timeZoneName
                 console.log(userTimeZone)
@@ -306,6 +311,8 @@ function addPost(event) {
             var char = chars[key]
 
             console.log(char)
+
+           
 
 
             var emblemBackground = char.emblemBackgroundPath
