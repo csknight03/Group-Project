@@ -159,6 +159,7 @@
     border-radius: 15px;
     border: 3px solid grey;
     padding: 0%;
+    margin-bottom: 10%;
 }
 
 .classType {
@@ -173,6 +174,9 @@
     height: 50px!important;
     border: none!important;
     display: grid;
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
 }
 
 .light-symbol {
@@ -303,7 +307,7 @@ a {
     color: white;
 }
 
-body{
+body {
     font-family: 'Roboto', sans-serif;
 }
 
