@@ -3,6 +3,7 @@ $("form").hide()
 $("#post-section").hide()
 var errorBanner = "<div class='alert alert-danger' role='alert'>No Destiny Player Found!</div>"
 var successBanner = "<div class='alert alert-success' role='alert'><h4 class='alert-heading'>Post Created!</h4></div>"
+var geoErrorBanner = "<div class='alert alert-danger' role='alert'>Post Submitted! Enable Geo Location for Accurate Timezones</div>"
 
 
 
@@ -21,7 +22,18 @@ function successMessage(){
         setTimeout(function() {
             $("#errorMessage").fadeOut()
         
-        }, 1500);
+        }, 2000);
+
+}
+
+function geoError() {
+
+    $("#errorMessage").html(geoErrorBanner)
+    
+            setTimeout(function() {
+                $("#errorMessage").fadeOut()
+            
+            }, 3000);
 
 }
 
@@ -94,7 +106,6 @@ $(document).ready(function() {
         navigator.geolocation.getCurrentPosition(successFunction);
         userTimeZone = 'Unspecified Location'
     
-    console.log(userTimeZone)
     } else {
         alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
     }
@@ -104,7 +115,6 @@ $(document).ready(function() {
         lat = position.coords.latitude;
         long = position.coords.longitude;
         condition = true;
-        console.log('Your latitude is :' + lat + ' and longitude is ' + long);
 
         var GoogleSettings = {
             "crossDomain": true,
@@ -116,12 +126,11 @@ $(document).ready(function() {
 
             $.ajax(GoogleSettings).done(function(response) {
                 userTimeZone = response.timeZoneName
-                console.log(userTimeZone)
-
 
             })
 
         }
+
     }
 
 
@@ -288,8 +297,6 @@ function addPost(event) {
          }else {
 
         var membershipid = response.Response[0].membershipId
-            // console.log(response)
-            // console.log(membershipid)
 
         var characterIds = {
             "crossDomain": true,
@@ -309,11 +316,6 @@ function addPost(event) {
             var chars = response.Response.characters.data
             var key = Object.keys(chars)[0]
             var char = chars[key]
-
-            console.log(char)
-
-           
-
 
             var emblemBackground = char.emblemBackgroundPath
             var dateLastPlayed = char.dateLastPlayed
@@ -343,6 +345,7 @@ function addPost(event) {
 
 
 
+
             database.ref().push({
                 gamertag: gamertag,
                 lightLevel: lightLevel,
@@ -356,7 +359,12 @@ function addPost(event) {
                 platform: platformName
 
             });
+
+            if(userTimeZone === 'Unspecified Location'){
+                geoError()
+            }else{
             successMessage()
+            }
 
 
         }
