@@ -15,6 +15,8 @@
 </head>
 
 <body>
+
+
     <div class="landing-page">
 
 
@@ -30,8 +32,11 @@
         </div>
         <div>
             <div id="video_box">
+
+
+                
                 <video autoplay loop id="player" style="margin-top: -8%" muted plays-inline>
-                                    <source src="assets/images/background2.mp4" type="video/mp4">
+                                    <source src="assets/images/background4.mp4" type="video/mp4">
                                   </video>
             </div>
         </div>
@@ -41,13 +46,30 @@
     <br>
 
     <div class="post-section" id="post-section">
+
         <div class="row lfg-row" id="lfgBanner" style=" min-height: 175px; max-height: 175px;">
-            <div class="col-sm-12 text-center" style="margin-top: 3%;">
+            <div class="container">
+                <ul class="nav nav-pills" style="margin-top:1%;">
+                        <li class="nav-item">
+                          <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" href="lfg.html">LFG</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="stats.html">Stats</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#">Donate</a>
+                        </li>
+                      </ul>
+            <div class="col-sm-12 text-center" style="margin-top: -2%;">
                 <h1 style="color: white;">Looking For Group</h1>
             </div>
             <div class="col-sm-12 text-center">
-                <div id="errorMessage"></div>
+                <div id="errorMessage"><br></div>
             </div>
+        </div>
         </div>
 
 
@@ -143,6 +165,12 @@
     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
     <script src="assets/js/typewriter.js"></script>
     <script src="assets/js/lfg.js"></script>
+
+
+
+
+
+
 </body>
 
 </html>
